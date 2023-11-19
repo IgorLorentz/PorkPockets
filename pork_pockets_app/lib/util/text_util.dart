@@ -5,6 +5,7 @@ Text FormatedText(String text, double fontSize, FontWeight fontWeight, {Color fo
   return Text
   (
     text,
+    textAlign: TextAlign.justify,
     style: TextStyle
     (
       color: fontColor,
