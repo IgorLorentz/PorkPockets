@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pork_pockets_app/pages/guide_page.dart';
 import 'package:pork_pockets_app/pages/home_page.dart';
 import 'package:pork_pockets_app/pages/register_page.dart';
 
