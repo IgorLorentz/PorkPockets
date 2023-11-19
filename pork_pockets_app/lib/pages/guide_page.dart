@@ -11,7 +11,7 @@ class GuidePage extends StatelessWidget {
       backgroundColor: Color.fromRGBO(7, 121, 148, 58),
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(7, 121, 148, 58),
-        flexibleSpace: Image.asset('assets/images/logo_pork.jpg',),
+        flexibleSpace: Image.asset('assets/images/logo_pork_bg.png', fit: BoxFit.cover,),
       ),
       body: ListView(children: [
         Column(
