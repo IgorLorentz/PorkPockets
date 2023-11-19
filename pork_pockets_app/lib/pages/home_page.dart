@@ -9,9 +9,13 @@ class HomePage extends StatelessWidget
   {
     return Scaffold
     (
+      backgroundColor: Color.fromRGBO(7, 121, 148, 58),
+
       appBar: AppBar
       (
-        title: const Text("Layout Modelo"),
+        backgroundColor: Color.fromRGBO(7, 121, 148, 58),
+        elevation: 0,
+        title: const Text("Home"),
         centerTitle: true,
       ),
 
