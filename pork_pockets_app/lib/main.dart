@@ -1,5 +1,6 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:pork_pockets_app/pages/guide_page.dart';
 import 'package:pork_pockets_app/pages/home_page.dart';
 
 main() => runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget
       darkTheme: FlexThemeData.dark(scheme: FlexScheme.mandyRed),
       // Use dark or light theme based on system setting.
       themeMode: ThemeMode.system,
-      home: const HomePage(),
+      home: const GuidePage(),
     );
   }
 }
