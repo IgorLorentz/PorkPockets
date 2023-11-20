@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pork_pockets_app/pages/home_page.dart';
 import 'package:pork_pockets_app/util/images_base.dart';
-import 'package:pork_pockets_app/util/text_base.dart';
+import 'package:pork_pockets_app/util/text_util.dart';
 
 class GuidePage extends StatelessWidget {
   const GuidePage({Key? key}) : super(key: key);

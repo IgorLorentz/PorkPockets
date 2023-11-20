@@ -14,6 +14,7 @@ class RegisterPage extends StatefulWidget
 class _RegisterPageState extends State<RegisterPage> 
 {
   final _formKey = GlobalKey<FormState>();
+  bool passwordObscured = true;
 
   @override
   Widget build(BuildContext context) 
@@ -42,7 +43,7 @@ class _RegisterPageState extends State<RegisterPage>
             (
               children: 
               [
-                SizedBox(height: 70),
+                SizedBox(height: 50),
             
                 FormatedText("Insira seus dados", 36, FontWeight.bold),
             
@@ -50,15 +51,91 @@ class _RegisterPageState extends State<RegisterPage>
             
                 FormatedText("Insira seu nome completo", 20, FontWeight.bold),
             
-                NameForm(),
+                NameForm(TextInputAction.next, true),
 
                 SizedBox(height: 15),
 
                 FormatedText("Insira seu e-mail", 20, FontWeight.bold),
 
-                EmailForm(),
+                EmailForm(TextInputAction.next, false),
 
                 SizedBox(height: 15),
+
+                FormatedText("Insira uma senha", 20, FontWeight.bold),
+
+                TextFormField
+                (
+                  textInputAction: TextInputAction.next,
+                  keyboardType: TextInputType.number,
+                  obscureText: passwordObscured,
+                
+                  decoration: InputDecoration
+                  (
+                    hintText: "Password",
+                    border: const OutlineInputBorder(borderSide: BorderSide()),
+                    fillColor: Colors.white,
+                    filled: true,
+                    suffixIcon: IconButton
+                    (
+                      icon: Icon(passwordObscured ? Icons.visibility_off : Icons.visibility),
+                      onPressed: () 
+                      {
+                        setState(() => passwordObscured = !passwordObscured);
+                      },
+                    )
+                  ),
+
+                  style: const TextStyle
+                  (
+                    fontFamily: "Josefin", 
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+
+                SizedBox(height: 15),
+
+                FormatedText("Confirme sua senha", 20, FontWeight.bold),
+
+                TextFormField
+                (
+                  textInputAction: TextInputAction.done,
+                  keyboardType: TextInputType.number,
+                  obscureText: passwordObscured,
+                
+                  decoration: InputDecoration
+                  (
+                    hintText: "Password",
+                    border: const OutlineInputBorder(borderSide: BorderSide()),
+                    fillColor: Colors.white,
+                    filled: true,
+                    suffixIcon: IconButton
+                    (
+                      icon: Icon(passwordObscured ? Icons.visibility_off : Icons.visibility),
+                      onPressed: () 
+                      {
+                        setState(() => passwordObscured = !passwordObscured);
+                      },
+                    )
+                  ),
+
+                  style: const TextStyle
+                  (
+                    fontFamily: "Josefin", 
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+
+                SizedBox(height: 75),
+
+                ElevatedButton
+                (
+                  onPressed: () {print("Botão clicado");}, 
+                  style: ElevatedButton.styleFrom
+                  (
+                    backgroundColor: Paleta.azulEscurao,
+                  ),
+                  child: FormatedText("Criar conta", 24, FontWeight.bold)
+                ),
               ],
             ),
           ),
