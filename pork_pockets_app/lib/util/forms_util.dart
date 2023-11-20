@@ -47,3 +47,26 @@ TextFormField EmailForm(TextInputAction textInputAction, bool autofocus)
     ),
   );
 }
+
+TextFormField ValueForm(TextInputAction textInputAction, bool autofocus)
+{
+  return TextFormField
+  (
+    textInputAction: textInputAction,
+    keyboardType: TextInputType.number,
+    autofocus: autofocus,
+    
+    decoration: const InputDecoration
+    (
+      border: OutlineInputBorder(borderSide: BorderSide()),
+      fillColor: Colors.white,
+      filled: true,
+    ),
+
+    style: const TextStyle
+    (
+      fontFamily: "Josefin", 
+      fontWeight: FontWeight.bold,
+    ),
+  );
+}
