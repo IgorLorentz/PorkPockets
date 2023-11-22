@@ -5,6 +5,7 @@ import 'package:pork_pockets_app/pages/cadastrar_renda_page.dart';
 import 'package:pork_pockets_app/pages/guide_page.dart';
 import 'package:pork_pockets_app/pages/home_page.dart';
 import 'package:pork_pockets_app/pages/register_page.dart';
+import 'package:pork_pockets_app/pages/new_meta_page.dart';
 
 main() => runApp(const MyApp());
 
