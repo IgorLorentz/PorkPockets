@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/svg_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
@@ -9,13 +11,7 @@ class GuidePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Paleta.bgColor,
-      appBar: AppBar(
-        backgroundColor: Paleta.bgColor,
-        flexibleSpace: Image.asset(
-          'assets/images/logo_pork_bg.png',
-          fit: BoxFit.none,
-        ),
-      ),
+      appBar: appBar(),
       body: ListView(children: [
         Column(
             //mainAxisAlignment: MainAxisAlignment.center,
@@ -28,14 +24,15 @@ class GuidePage extends StatelessWidget {
                     child: FormatedText('Guia do Usuário', 36, FontWeight.bold),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 20) ,
-                    child: 
-                      Row(
-                        children: [
-                          Title(color: Colors.white, child: FormatedText('Método 50-30-20', 20, FontWeight.bold)),
-                        ],
-                      ),
-                    
+                    padding: EdgeInsets.only(left: 20),
+                    child: Row(
+                      children: [
+                        Title(
+                            color: Colors.white,
+                            child: FormatedText(
+                                'Método 50-30-20', 20, FontWeight.bold)),
+                      ],
+                    ),
                   ),
                   Container(
                     padding: EdgeInsets.all(20),
@@ -44,9 +41,8 @@ class GuidePage extends StatelessWidget {
                         20,
                         FontWeight.w400),
                   ),
-
                   Container(),
-                  addSvg('assets/images/50_porco.svg'),
+                  SvgPicture.asset('assets/images/50_porco.svg'),
                   Container(
                     padding: EdgeInsets.all(20),
                     child: FormatedText(
@@ -54,8 +50,7 @@ class GuidePage extends StatelessWidget {
                         20,
                         FontWeight.w400),
                   ),
-
-                  addSvg('assets/images/30_porco.svg'),
+                  SvgPicture.asset('assets/images/30_porco.svg'),
                   Container(
                     padding: EdgeInsets.all(20),
                     child: FormatedText(
@@ -63,7 +58,6 @@ class GuidePage extends StatelessWidget {
                         20,
                         FontWeight.w400),
                   ),
-
                   addSvg('assets/images/20_porco.svg'),
                   Container(
                     padding: EdgeInsets.all(20),
