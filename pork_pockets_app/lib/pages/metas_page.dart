@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
 
-class MetasPage extends StatelessWidget 
+class MetasPage extends StatefulWidget 
 {
   const MetasPage({super.key});
 
+  @override
+  State<MetasPage> createState() => _MetasPageState();
+}
+
+class _MetasPageState extends State<MetasPage> 
+{
   @override
   Widget build(BuildContext context) 
   {
@@ -29,28 +35,85 @@ class MetasPage extends StatelessWidget
             [
               Container
               (
-                margin: EdgeInsets.only(left: 20, top: 35),
+                width: double.infinity,
+                height: 40,
+                margin: EdgeInsets.only(left: 20, top: 35, bottom: 20),
+  
+                child: FormatedText("Suas metas:", 40, FontWeight.bold),
+              ),
 
-                child: SizedBox
+              Container
+              (
+                margin: EdgeInsets.only(right: 30, bottom: 5),
+                alignment: Alignment.centerRight,
+
+                child: ElevatedButton
                 (
-                  width: double.infinity,
-                  height: 40,
+                  onPressed: (){print("Cliquei");},
                   
-                
-                  child: FormatedText("Suas metas:", 40, FontWeight.bold),
+                  style: ElevatedButton.styleFrom
+                  (
+                    backgroundColor: Paleta.azulEscurao
+                  ),
+
+                  child: FormatedText("Nova meta", 15, FontWeight.bold),
                 ),
               ),
 
               Container
               (
-                margin: EdgeInsets.only(right: 30, top: 20, bottom: 5),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Paleta.azulEscuro),
+                margin: EdgeInsets.all(20),
 
-                child: SizedBox
+                child: Column
                 (
-                  width: double.infinity,
-                  height: 22,
-                  
-                  child: FormatedText("Suas metas:", 40, FontWeight.bold),
+                  children: 
+                  [
+                    SizedBox(height: 15),
+
+                    Row
+                    (
+                      children: 
+                      [
+                        Container
+                        (
+                          margin: EdgeInsets.only(left: 20),
+                          child: FormatedText("Meta: Moto", 20, FontWeight.normal)
+                        ),
+                
+                        Container
+                        (
+                          margin: EdgeInsets.only(left: 150),
+                          child: Icon(Icons.favorite_border)
+                        ),
+
+                        Container
+                        (
+                          margin: EdgeInsets.only(left: 10),
+                          child: Icon(Icons.edit)
+                        )
+                      ],
+                    ),
+
+                    Row
+                    (
+                      mainAxisAlignment: MainAxisAlignment.center,
+
+                      children: 
+                      [
+                        Container
+                        (
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
+
+                          child: Container
+                          (
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Paleta.verde),
+                            child: Text("Emannuel"),
+                          ),
+                        )
+                      ],
+                    )
+                  ],
                 ),
               )
             ],
