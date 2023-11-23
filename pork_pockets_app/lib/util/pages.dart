@@ -1,0 +1,9 @@
+export '../pages/cadastrar_renda_page.dart';
+export '../pages/despesas_page.dart';
+export '../pages/edit_meta_page.dart';
+export '../pages/guide_page.dart';
+export '../pages/home_page.dart';
+export '../pages/login_page.dart';
+export '../pages/metas_page.dart';
+export '../pages/new_meta_page.dart';
+export '../pages/register_page.dart';

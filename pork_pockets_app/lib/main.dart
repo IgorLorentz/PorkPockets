@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:pork_pockets_app/pages/home_page.dart';
-import 'package:pork_pockets_app/routes.dart';
+import 'util/pages.dart';
+import 'routes.dart';
 
 main() => runApp(const MyApp());
 
-class MyApp extends StatelessWidget
-{
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context)
-  {
-    return MaterialApp
-    (
+  Widget build(BuildContext context) {
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData
-      (
+      theme: ThemeData(
         primaryColor: Colors.blue,
       ),
       home: HomePage(),
