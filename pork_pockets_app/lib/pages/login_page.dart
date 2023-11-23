@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:pork_pockets_app/pages/register_page.dart';
+import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/footer.dart';
 import 'package:pork_pockets_app/util/forms_util.dart';
-import 'package:pork_pockets_app/util/svg_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
 
 class LoginPage extends StatefulWidget {
@@ -20,13 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Paleta.bgColor,
-      appBar: AppBar(
-        backgroundColor: Paleta.bgColor,
-        flexibleSpace: Image.asset(
-          'assets/images/logo_pork_bg.png',
-          fit: BoxFit.none,
-        ),
-      ),
+      appBar: appBar(),
       body: SingleChildScrollView(
         child: Form(
           child: Column(
@@ -35,9 +30,12 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
                   children: [
-                    SizedBox(height: 50),
+                    SvgPicture.asset('assets/images/flying_pig.svg'),
+                    SizedBox(
+                      height: 62,
+                    ),
                     FormatedText("Bem-Vindo de volta!", 36, FontWeight.bold),
-                    SizedBox(height: 35),
+                    SizedBox(height: 22),
                     Row(
                       children: [
                         FormatedText("Insira seu e-mail:", 20, FontWeight.bold),
@@ -107,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-            Footer()
+              Footer()
             ],
           ),
         ),
