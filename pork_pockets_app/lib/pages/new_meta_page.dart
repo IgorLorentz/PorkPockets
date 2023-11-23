@@ -27,7 +27,11 @@ class _NovaMetaState extends State<NovaMeta> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset('assets/images/flying_pig.svg'),
+              const SizedBox(height: 30),
+              SvgPicture.asset(
+                'assets/images/flying_pig.svg',
+                width: 150,
+              ),
               const SizedBox(height: 30),
               Form(
                   key: _novaMetaFormKey,

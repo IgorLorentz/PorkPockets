@@ -7,6 +7,9 @@ AppBar appBar() {
     backgroundColor: Paleta.bgColor,
     elevation: 0,
     centerTitle: true,
-    title: SvgPicture.asset('assets/images/PorkPockets.svg'),
+    title: SvgPicture.asset(
+      'assets/images/PorkPockets.svg',
+      height: 70,
+    ),
   );
 }
