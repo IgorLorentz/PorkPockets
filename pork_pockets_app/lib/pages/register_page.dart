@@ -43,89 +43,35 @@ class _RegisterPageState extends State<RegisterPage>
             (
               children: 
               [
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
             
                 FormatedText("Insira seus dados", 36, FontWeight.bold),
             
-                SizedBox(height: 35),
+                const SizedBox(height: 35),
             
                 FormatedText("Insira seu nome completo", 20, FontWeight.bold),
             
                 NameForm(TextInputAction.next, true),
 
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
 
                 FormatedText("Insira seu e-mail", 20, FontWeight.bold),
 
                 EmailForm(TextInputAction.next, false),
 
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
 
                 FormatedText("Insira uma senha", 20, FontWeight.bold),
 
-                TextFormField
-                (
-                  textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.number,
-                  obscureText: passwordObscured,
-                
-                  decoration: InputDecoration
-                  (
-                    hintText: "Password",
-                    border: const OutlineInputBorder(borderSide: BorderSide()),
-                    fillColor: Colors.white,
-                    filled: true,
-                    suffixIcon: IconButton
-                    (
-                      icon: Icon(passwordObscured ? Icons.visibility_off : Icons.visibility),
-                      onPressed: () 
-                      {
-                        setState(() => passwordObscured = !passwordObscured);
-                      },
-                    )
-                  ),
+                passwordForm(TextInputAction.next),
 
-                  style: const TextStyle
-                  (
-                    fontFamily: "Josefin", 
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
 
                 FormatedText("Confirme sua senha", 20, FontWeight.bold),
 
-                TextFormField
-                (
-                  textInputAction: TextInputAction.done,
-                  keyboardType: TextInputType.number,
-                  obscureText: passwordObscured,
-                
-                  decoration: InputDecoration
-                  (
-                    hintText: "Password",
-                    border: const OutlineInputBorder(borderSide: BorderSide()),
-                    fillColor: Colors.white,
-                    filled: true,
-                    suffixIcon: IconButton
-                    (
-                      icon: Icon(passwordObscured ? Icons.visibility_off : Icons.visibility),
-                      onPressed: () 
-                      {
-                        setState(() => passwordObscured = !passwordObscured);
-                      },
-                    )
-                  ),
+                passwordForm(TextInputAction.done),
 
-                  style: const TextStyle
-                  (
-                    fontFamily: "Josefin", 
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-
-                SizedBox(height: 75),
+                const SizedBox(height: 75),
 
                 ElevatedButton
                 (
@@ -142,5 +88,36 @@ class _RegisterPageState extends State<RegisterPage>
         ),
       ),
     );
+  }
+
+  TextFormField passwordForm(TextInputAction textInputAction) {
+    return TextFormField
+              (
+                textInputAction: TextInputAction.done,
+                keyboardType: TextInputType.number,
+                obscureText: passwordObscured,
+              
+                decoration: InputDecoration
+                (
+                  hintText: "Password",
+                  border: const OutlineInputBorder(borderSide: BorderSide()),
+                  fillColor: Colors.white,
+                  filled: true,
+                  suffixIcon: IconButton
+                  (
+                    icon: Icon(passwordObscured ? Icons.visibility_off : Icons.visibility),
+                    onPressed: () 
+                    {
+                      setState(() => passwordObscured = !passwordObscured);
+                    },
+                  )
+                ),
+
+                style: const TextStyle
+                (
+                  fontFamily: "Josefin", 
+                  fontWeight: FontWeight.bold,
+                ),
+              );
   }
 }
