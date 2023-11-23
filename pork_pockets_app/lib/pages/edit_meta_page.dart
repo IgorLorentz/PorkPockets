@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/forms_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
@@ -17,19 +18,13 @@ class _EditMetaPageState extends State<EditMetaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Paleta.bgColor,
-      appBar: AppBar(
-        backgroundColor: Paleta.bgColor,
-        flexibleSpace: Image.asset(
-          'assets/images/logo_pork_bg.png',
-          fit: BoxFit.none,
-        ),
-      ),
+      appBar: appBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
               decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10)),
-                margin: const EdgeInsets.all(40),
+                margin: const EdgeInsets.all(45),
                 child: Form(
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
