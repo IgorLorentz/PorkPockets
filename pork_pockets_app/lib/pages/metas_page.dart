@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
 
@@ -31,6 +32,8 @@ class _MetasPageState extends State<MetasPage>
         [
           Column
           (
+            mainAxisAlignment: MainAxisAlignment.center,
+
             children: 
             [
               Container
@@ -62,60 +65,40 @@ class _MetasPageState extends State<MetasPage>
 
               Container
               (
+                margin: EdgeInsets.all(15),
+                
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Paleta.azulEscuro),
-                margin: EdgeInsets.all(20),
 
                 child: Column
                 (
                   children: 
                   [
-                    SizedBox(height: 15),
-
                     Row
                     (
                       children: 
                       [
-                        Container
-                        (
-                          margin: EdgeInsets.only(left: 20),
-                          child: FormatedText("Meta: Moto", 20, FontWeight.normal)
-                        ),
-                
-                        Container
-                        (
-                          margin: EdgeInsets.only(left: 150),
-                          child: Icon(Icons.favorite_border)
-                        ),
-
-                        Container
-                        (
-                          margin: EdgeInsets.only(left: 10),
-                          child: Icon(Icons.edit)
-                        )
+                        FormatedText("Meta: Moto", 20, FontWeight.normal),
+                        IconButton(onPressed: (){print("Favorite");}, icon: Icon(Icons.favorite_outline)),
+                        IconButton(onPressed: (){print("Edit");}, icon: Icon(Icons.edit)),
                       ],
                     ),
 
-                    Row
+                    Container
                     (
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      margin: EdgeInsets.symmetric(vertical: 0, horizontal: 15),
+                      width: double.infinity,
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
+                      child: Container
+                      (
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Paleta.verde),
+                        child: Text("Olá zé")
+                      ),
+                    ),
 
-                      children: 
-                      [
-                        Container
-                        (
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
-
-                          child: Container
-                          (
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Paleta.verde),
-                            child: Text("Emannuel"),
-                          ),
-                        )
-                      ],
-                    )
+                    IconButton(onPressed: (){print("Open");}, icon: Icon(Icons.keyboard_arrow_down)),
                   ],
                 ),
-              )
+              ),
             ],
           )
         ],
