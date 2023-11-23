@@ -71,6 +71,8 @@ flutter:
     - assets/images/50_porco.svg
     - assets/images/30_porco.svg
     - assets/images/20_porco.svg
+    - assets/images/PorkPockets.svg
+    - assets/images/flying_pig.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
