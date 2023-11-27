@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'util/pages.dart';
 
-class Routes {
-  Map<String, WidgetBuilder> routes() {
-    return {
-      '/': (context) => HomePage(),
-      '/guide-page': (context) => GuidePage(),
-      '/meta': (context) => MetasPage(),
-    };
-  }
+Map<String, WidgetBuilder> routes() 
+{
+  return 
+  {
+    '/': (context) => const LoginPage(),
+    '/home': (context) => const HomePage(),
+    '/register': (context) => const RegisterPage(),
+    '/metas': (context) => const MetasPage(),
+    '/guide': (context) => const GuidePage(),
+  };
 }

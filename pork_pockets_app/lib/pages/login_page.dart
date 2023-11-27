@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pork_pockets_app/pages/register_page.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/footer.dart';
@@ -8,7 +7,7 @@ import 'package:pork_pockets_app/util/forms_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -31,18 +30,18 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: [
                     SvgPicture.asset('assets/images/flying_pig.svg'),
-                    SizedBox(
+                    const SizedBox(
                       height: 62,
                     ),
                     FormatedText("Bem-Vindo de volta!", 36, FontWeight.bold),
-                    SizedBox(height: 22),
+                    const SizedBox(height: 22),
                     Row(
                       children: [
                         FormatedText("Insira seu e-mail:", 20, FontWeight.bold),
                       ],
                     ),
                     EmailForm(TextInputAction.next, false),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     Row(
                       children: [
                         FormatedText("Insira uma senha:", 20, FontWeight.bold),
@@ -79,26 +78,22 @@ class _LoginPageState extends State<LoginPage> {
                             fontColor: Paleta.azulEscurao),
                       ],
                     ),
-                    SizedBox(height: 25),
+                    const SizedBox(height: 25),
                     ElevatedButton(
                         onPressed: () {
-                          print("Botão clicado");
+                          Navigator.pushNamed(context, "/home");
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Paleta.azulEscurao,
                         ),
                         child: FormatedText("Login", 24, FontWeight.bold)),
-                    SizedBox(height: 25),
+                    const SizedBox(height: 25),
                     ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => RegisterPage(),
-                              ));
+                          Navigator.pushNamed(context, "/register");
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(70, 1, 31, 38),
+                          backgroundColor: const Color.fromARGB(70, 1, 31, 38),
                         ),
                         child:
                             FormatedText("Cadastre-se", 24, FontWeight.bold)),

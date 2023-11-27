@@ -13,6 +13,7 @@ class RegisterPage extends StatefulWidget
 
 class _RegisterPageState extends State<RegisterPage> 
 {
+  // ignore: unused_field
   final _formKey = GlobalKey<FormState>();
   bool passwordObscured = true;
 
@@ -75,7 +76,7 @@ class _RegisterPageState extends State<RegisterPage>
 
                 ElevatedButton
                 (
-                  onPressed: () {print("Botão clicado");}, 
+                  onPressed: () {Navigator.pushNamed(context, "/");}, 
                   style: ElevatedButton.styleFrom
                   (
                     backgroundColor: Paleta.azulEscurao,
