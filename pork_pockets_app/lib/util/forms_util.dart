@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pork_pockets_app/pages/validator.dart';
 
+final Validation validar = Validation();
 TextFormField NameForm(TextInputAction textInputAction, bool autofocus) {
   return TextFormField(
-    textInputAction: textInputAction,
+    validator: (nome) => validar.campoNome(nome.toString()),
+    textInputAction: TextInputAction.next,
     keyboardType: TextInputType.text,
     autofocus: autofocus,
     decoration: const InputDecoration(
@@ -20,7 +23,8 @@ TextFormField NameForm(TextInputAction textInputAction, bool autofocus) {
 
 TextFormField EmailForm(TextInputAction textInputAction, bool autofocus) {
   return TextFormField(
-    textInputAction: textInputAction,
+    validator: (email) => validar.campoEmail(email.toString()),
+    textInputAction: TextInputAction.next,
     keyboardType: TextInputType.emailAddress,
     autofocus: autofocus,
     decoration: const InputDecoration(
@@ -39,6 +43,7 @@ TextFormField EmailForm(TextInputAction textInputAction, bool autofocus) {
 TextFormField passwordForm(
     TextInputAction textInputAction, bool autofocus, bool passwordObscured) {
   return TextFormField(
+    validator: (senha) => validar.campoSenha(senha.toString()),
     textInputAction: TextInputAction.done,
     keyboardType: TextInputType.number,
     autofocus: autofocus,
