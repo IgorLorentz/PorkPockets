@@ -2,9 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pork_pockets_app/pages/cadastrar_renda_page.dart';
 import 'package:pork_pockets_app/pages/edit_meta_page.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
+import 'package:pork_pockets_app/util/images_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
 
 class HomePage extends StatelessWidget {
@@ -33,7 +35,7 @@ class HomePage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              FormatedText('Seu salário:', 20, FontWeight.normal),
+              FormatedText('Seu salário: R\$ 1000,00', 20, FontWeight.normal),
               const SizedBox(
                 width: 40,
               ),
@@ -42,7 +44,7 @@ class HomePage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const EditMetaPage(),
+                          builder: (context) => const CadastraRenda(),
                         ));
                   },
                   style: ElevatedButton.styleFrom(
@@ -69,7 +71,7 @@ class HomePage extends StatelessWidget {
                     children: [
                       smallText('Necessidades', FontWeight.bold,
                           fontColor: Paleta.rosa),
-                      SvgPicture.asset('assets/images/50_porco.svg')
+                      addImg('assets/images/50_porco.png')
                     ],
                   ),
                 ),
@@ -89,7 +91,7 @@ class HomePage extends StatelessWidget {
                     children: [
                       smallText('Lazer', FontWeight.bold,
                           fontColor: Paleta.rosa),
-                      SvgPicture.asset('assets/images/30_porco.svg')
+                      addImg('assets/images/30_porco.png')
                     ],
                   ),
                 ),
@@ -109,7 +111,7 @@ class HomePage extends StatelessWidget {
                     children: [
                       smallText('Poupança', FontWeight.bold,
                           fontColor: Paleta.rosa),
-                      SvgPicture.asset('assets/images/20_porco.svg')
+                      addImg('assets/images/20_porco.png')
                     ],
                   ),
                 ),
@@ -138,7 +140,11 @@ class HomePage extends StatelessWidget {
                         icon: const Icon(Icons.favorite_outline)),
                     IconButton(
                         onPressed: () {
-                          print("Edit");
+                          Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const EditMetaPage(),
+                        ));
                         },
                         icon: const Icon(Icons.edit)),
                   ],
