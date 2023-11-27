@@ -15,6 +15,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool passwordObscured = true;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +24,7 @@ class _LoginPageState extends State<LoginPage> {
       appBar: appBar(),
       body: SingleChildScrollView(
         child: Form(
+          key: _formKey,
           child: Column(
             children: [
               Padding(
@@ -40,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
                         FormatedText("Insira seu e-mail:", 20, FontWeight.bold),
                       ],
                     ),
-                    EmailForm(TextInputAction.next, false),
+                    EmailForm(TextInputAction.next, true),
                     const SizedBox(height: 15),
                     Row(
                       children: [
@@ -48,8 +50,12 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                     TextFormField(
-                      textInputAction: TextInputAction.next,
+                      onFieldSubmitted: (value) {_onSubmit(context);},
+                      validator: (senha) =>
+                          validar.campoSenha(senha.toString()),
+                      textInputAction: TextInputAction.done,
                       keyboardType: TextInputType.number,
+                      autofocus: false,
                       obscureText: passwordObscured,
                       decoration: InputDecoration(
                           hintText: "Password",
@@ -61,10 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                             icon: Icon(passwordObscured
                                 ? Icons.visibility_off
                                 : Icons.visibility),
-                            onPressed: () {
-                              setState(
-                                  () => passwordObscured = !passwordObscured);
-                            },
+                            onPressed: () {},
                           )),
                       style: const TextStyle(
                         fontFamily: "Josefin",
@@ -81,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(height: 25),
                     ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, "/home");
+                          _onSubmit(context);
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Paleta.azulEscurao,
@@ -106,5 +109,40 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  void _onSubmit(inContext) {
+    if (_formKey.currentState!.validate()) {
+      print('Formulário Validado!');
+    } else {
+      print('Formulário com Erros.');
+      Alert:
+      showDialog(
+        context: inContext,
+        barrierDismissible: false,
+        builder: (inContext) {
+          return WillPopScope(
+            onWillPop: () async => false,
+            child: AlertDialog(
+              title: Text('Dados Inválidos!'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(inContext);
+                  },
+                  child: Text('Cancelar'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(inContext);
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            ),
+          );
+        },
+      );
+    }
   }
 }
