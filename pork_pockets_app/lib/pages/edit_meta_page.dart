@@ -38,11 +38,26 @@ class _EditMetaPageState extends State<EditMetaPage> {
                             FormatedText("Insira um novo nome", 20, FontWeight.bold, fontColor: Paleta.azulEscurao),
                           ],
                         ),
-                        NameForm(TextInputAction.next, true),
+                        TextFormField(
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.number,
+                          obscureText: passwordObscured,
+                          decoration: const InputDecoration(
+                              hintText: "Valor",
+                              border:
+                                  OutlineInputBorder(borderSide: BorderSide()),
+                              fillColor: Color.fromARGB(200, 220, 220, 220),
+                              filled: true,
+                             ),
+                          style: const TextStyle(
+                            fontFamily: "Josefin",
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         const SizedBox(height: 15),
                         Row(
                           children: [
-                            FormatedText("Insira um novo valor", 20, FontWeight.bold, fontColor: Paleta.azulEscurao),
+                            FormatedText("Insira um novo nome", 20, FontWeight.bold, fontColor: Paleta.azulEscurao),
                           ],
                         ),
                         TextFormField(
