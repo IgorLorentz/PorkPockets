@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
+import 'package:pork_pockets_app/util/images_util.dart';
 import 'package:pork_pockets_app/util/svg_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
 
@@ -41,8 +42,8 @@ class GuidePage extends StatelessWidget {
                         20,
                         FontWeight.w400),
                   ),
-                  Container(),
-                  SvgPicture.asset('assets/images/50_porco.svg'),
+                  addImg('assets/images/50_porco.png'),
+                  mediumText('50%', fontColor: Paleta.rosa),
                   Container(
                     padding: EdgeInsets.all(20),
                     child: FormatedText(
@@ -50,7 +51,8 @@ class GuidePage extends StatelessWidget {
                         20,
                         FontWeight.w400),
                   ),
-                  SvgPicture.asset('assets/images/30_porco.svg'),
+                  addImg('assets/images/30_porco.png'),
+                  mediumText('30%', fontColor: Paleta.rosa),
                   Container(
                     padding: EdgeInsets.all(20),
                     child: FormatedText(
@@ -58,7 +60,8 @@ class GuidePage extends StatelessWidget {
                         20,
                         FontWeight.w400),
                   ),
-                  addSvg('assets/images/20_porco.svg'),
+                  addImg('assets/images/20_porco.png'),
+                  mediumText('20%', fontColor: Paleta.rosa),
                   Container(
                     padding: EdgeInsets.all(20),
                     child: FormatedText(
