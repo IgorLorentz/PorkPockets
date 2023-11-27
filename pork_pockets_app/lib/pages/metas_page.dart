@@ -78,8 +78,8 @@ class _MetasPageState extends State<MetasPage>
                       children: 
                       [
                         FormatedText("Meta: Moto", 20, FontWeight.normal),
-                        IconButton(onPressed: (){print("Favorite");}, icon: Icon(Icons.favorite_outline)),
-                        IconButton(onPressed: (){print("Edit");}, icon: Icon(Icons.edit)),
+                        IconButton(onPressed: (){favorite();}, icon: Icon(Icons.favorite_outline), color: Colors.black),
+                        IconButton(onPressed: (){print("Edit");}, icon: Icon(Icons.edit), color: Colors.black),
                       ],
                     ),
 
@@ -90,12 +90,23 @@ class _MetasPageState extends State<MetasPage>
                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
                       child: Container
                       (
+                        padding: EdgeInsets.symmetric(vertical: 3, horizontal: 8),
+
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Paleta.verde),
-                        child: Text("Olá zé")
+                        child: Row
+                        (
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                          children: 
+                          [
+                            FormatedText("R\$ 0", 14, FontWeight.normal, fontColor: Colors.black),
+                            FormatedText("R\$ 12.000", 14, FontWeight.normal, fontColor: Colors.black)
+                          ],
+                        )
                       ),
                     ),
 
-                    IconButton(onPressed: (){print("Open");}, icon: Icon(Icons.keyboard_arrow_down)),
+                    IconButton(onPressed: (){print("Open");}, icon: Icon(Icons.keyboard_arrow_down), color: Colors.black),
                   ],
                 ),
               ),
@@ -104,5 +115,10 @@ class _MetasPageState extends State<MetasPage>
         ],
       ),
     );
+  }
+
+  void favorite()
+  {
+    print("Favorite");
   }
 }
