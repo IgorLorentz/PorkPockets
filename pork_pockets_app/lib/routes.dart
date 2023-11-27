@@ -10,5 +10,6 @@ Map<String, WidgetBuilder> routes()
     '/register': (context) => const RegisterPage(),
     '/metas': (context) => const MetasPage(),
     '/guide': (context) => const GuidePage(),
+    '/cadastrar-renda': (context) => const CadastraRenda(),
   };
 }
