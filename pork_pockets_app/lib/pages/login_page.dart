@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pork_pockets_app/pages/pessoa.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/footer.dart';
 import 'package:pork_pockets_app/util/forms_util.dart';
+import 'package:pork_pockets_app/util/pages.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
 
 class LoginPage extends StatefulWidget {
@@ -16,9 +18,11 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool passwordObscured = true;
   final _formKey = GlobalKey<FormState>();
+  final Pessoa usuario = Pessoa();
 
   @override
   Widget build(BuildContext context) {
+    final pessoa = ModalRoute.of(context)!.settings.arguments as Pessoa;
     return Scaffold(
       backgroundColor: Paleta.bgColor,
       appBar: appBar(),
@@ -50,7 +54,9 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                     TextFormField(
-                      onFieldSubmitted: (value) {_onSubmit(context);},
+                      onFieldSubmitted: (value) {
+                        _onSubmit(context);
+                      },
                       validator: (senha) =>
                           validar.campoSenha(senha.toString()),
                       textInputAction: TextInputAction.done,
@@ -113,10 +119,9 @@ class _LoginPageState extends State<LoginPage> {
 
   void _onSubmit(inContext) {
     if (_formKey.currentState!.validate()) {
-      print('Formulário Validado!');
+      _formKey.currentState!.save();
+      Navigator.pop;
     } else {
-      print('Formulário com Erros.');
-      Alert:
       showDialog(
         context: inContext,
         barrierDismissible: false,

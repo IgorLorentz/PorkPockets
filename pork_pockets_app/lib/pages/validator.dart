@@ -28,4 +28,14 @@ class Validation {
     }
     return null;
   }
+  
+  String? campoValor(String valor) {
+    if (valor.isEmpty) {
+      return 'Entre com um valor';
+    }
+    if (valor.contains('-')) {
+      return 'A senha deve ser positivo';
+    }
+    return null;
+  }
 }
