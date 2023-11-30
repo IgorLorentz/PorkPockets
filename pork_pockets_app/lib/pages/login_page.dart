@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pork_pockets_app/pages/pessoa.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/footer.dart';
@@ -18,11 +17,11 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool passwordObscured = true;
   final _formKey = GlobalKey<FormState>();
-  final Pessoa usuario = Pessoa();
+  
 
   @override
   Widget build(BuildContext context) {
-    final pessoa = ModalRoute.of(context)!.settings.arguments as Pessoa;
+
     return Scaffold(
       backgroundColor: Paleta.bgColor,
       appBar: appBar(),
@@ -119,8 +118,7 @@ class _LoginPageState extends State<LoginPage> {
 
   void _onSubmit(inContext) {
     if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      Navigator.pop;
+      Navigator.pushNamed(context, "/home");
     } else {
       showDialog(
         context: inContext,
