@@ -1,6 +1,7 @@
 // ignore_for_file: sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/forms_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
@@ -19,11 +20,7 @@ class _CadastraRendaState extends State<CadastraRenda> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Paleta.bgColor,
-      appBar: AppBar(
-        backgroundColor: Paleta.bgColor,
-        title: const Text("PorkPocket\$"),
-        centerTitle: true,
-      ),
+      appBar: appBar(),
       body: Center(
         child: SingleChildScrollView(
             child: Form(
