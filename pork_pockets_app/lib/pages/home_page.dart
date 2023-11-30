@@ -41,16 +41,14 @@ class HomePage extends StatelessWidget {
               ),
               ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const CadastraRenda(),
-                        ));
+                    Navigator.pushNamed(context, "/cadastrar-renda");
                   },
                   style: ElevatedButton.styleFrom(
+                    shape: const CircleBorder(),
                     backgroundColor: Paleta.verde,
                   ),
-                  child: const Icon(Icons.edit))
+                  child: const Icon(Icons.edit,
+                      color: Color.fromARGB(500, 1, 31, 38)))
             ],
           ),
         ),
@@ -137,16 +135,20 @@ class HomePage extends StatelessWidget {
                         onPressed: () {
                           print("Favorite");
                         },
-                        icon: const Icon(Icons.favorite_outline)),
+                        icon: const Icon(Icons.favorite_outline,
+                        color: Colors.black,
+                        )),
                     IconButton(
                         onPressed: () {
                           Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const EditMetaPage(),
-                        ));
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const EditMetaPage(),
+                              ));
                         },
-                        icon: const Icon(Icons.edit)),
+                        icon: const Icon(Icons.edit,
+                        color: Colors.black,
+                        )),
                   ],
                 ),
               ),
@@ -183,6 +185,7 @@ class HomePage extends StatelessWidget {
   SafeArea drawer(BuildContext context) {
     return SafeArea(
         child: Drawer(
+      backgroundColor: Paleta.bgColor,
       child: ListView(
         children: [
           const UserAccountsDrawerHeader(
@@ -193,18 +196,24 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(context, "/guide");
               },
-              leading: const Icon(Icons.info_outline),
-              title: const Text("Guia"),
-              subtitle: const Text("Guia do Usuário"),
-              trailing: const Icon(Icons.arrow_forward)),
+              leading: const Icon(
+                Icons.info_outline,
+                color: Colors.white,
+              ),
+              title: FormatedText("Guia", 24, FontWeight.bold),
+              subtitle: FormatedText("Guia do usuário", 16, FontWeight.bold),
+              trailing: const Icon(
+                Icons.arrow_forward,
+                color: Colors.white,
+              )),
           ListTile(
             onTap: () {
               Navigator.pushNamed(context, "/metas");
             },
-            leading: const Icon(Icons.bar_chart_sharp),
-            title: const Text("Metas"),
-            subtitle: const Text("Suas metas"),
-            trailing: const Icon(Icons.arrow_forward),
+            leading: const Icon(Icons.bar_chart_sharp, color: Colors.white,),
+            title: FormatedText("Metas", 24, FontWeight.bold),
+            subtitle: FormatedText("Suas metas", 16, FontWeight.bold),
+            trailing: const Icon(Icons.arrow_forward, color: Colors.white,),
           ),
         ],
       ),
