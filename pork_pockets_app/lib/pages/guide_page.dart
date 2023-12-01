@@ -42,37 +42,49 @@ class GuidePage extends StatelessWidget {
                         20,
                         FontWeight.w400),
                   ),
-                  addImg('assets/images/50_porco.png'),
-                  mediumText('50%', fontColor: Paleta.rosa),
                   Container(
-                    padding: EdgeInsets.all(20),
-                    child: FormatedText(
-                        'Os gastos fixos são aqueles essenciais: energia elétrica, água, moradia, supermercado, transporte, plano de saúde, farmácia. Para entender o que realmente é um gasto essencial, reflita sobre o que pode ser dispensável e o que realmente é fundamental para você.',
-                        20,
-                        FontWeight.w400),
-                  ),
-                  addImg('assets/images/30_porco.png'),
-                  mediumText('30%', fontColor: Paleta.rosa),
+                    width: 600,
+                    decoration: BoxDecoration(
+                    color: Color.fromARGB(200, 2, 94, 115),
+                    borderRadius: BorderRadius.circular(15),
+                  ),  
+                    child: guiaInfo('assets/images/50_porco.png', '50%', 'Os gastos fixos são aqueles essenciais: energia elétrica, água, moradia, supermercado, transporte, plano de saúde, farmácia. Para entender o que realmente é um gasto essencial, reflita sobre o que pode ser dispensável e o que realmente é fundamental para você.')),
+                  SizedBox(height: 20,),
                   Container(
-                    padding: EdgeInsets.all(20),
-                    child: FormatedText(
-                        'Tudo o que não entrou na primeira lista e que não é considerado essencial para a sobrevivência pode ser classificado como gasto variável ou dispensável. É o café da manhã na padaria aos domingos, os serviços de streaming que você assina, a TV a cabo, os serviços que você faz fora de casa, como unha, cabelo, massagem, compras online muitas vezes desnecessárias que você faz para aproveitar uma suposta promoção.',
-                        20,
-                        FontWeight.w400),
+                    width: 600,
+                    decoration: BoxDecoration(
+                    color: Color.fromARGB(200, 2, 94, 115),
+                    borderRadius: BorderRadius.circular(15),
                   ),
-                  addImg('assets/images/20_porco.png'),
-                  mediumText('20%', fontColor: Paleta.rosa),
+                    child: guiaInfo('assets/images/30_porco.png', '30%', 'Tudo o que não entrou na primeira lista e que não é considerado essencial para a sobrevivência pode ser classificado como gasto variável ou dispensável. É o café da manhã na padaria aos domingos, os serviços de streaming que você assina, a TV a cabo, os serviços que você faz fora de casa, como unha, cabelo, massagem, compras online muitas vezes desnecessárias que você faz para aproveitar uma suposta promoção.')),
+                  SizedBox(height: 20,),
                   Container(
-                    padding: EdgeInsets.all(20),
-                    child: FormatedText(
-                        'Essa é a porcentagem ideal que você reserve da sua renda líquida mensal para viver com tranquilidade e conseguir realizar seus projetos. Poupar significa que você tem dinheiro guardado para te apoiar em momentos de urgência sem precisar recorrer a empréstimos ou linhas de crédito caras, como cheque especial e rotativo do cartão de crédito.',
-                        20,
-                        FontWeight.w400),
+                    width: 600,
+                    decoration: BoxDecoration(
+                    color: Color.fromARGB(200, 2, 94, 115),
+                    borderRadius: BorderRadius.circular(15),
                   ),
+                    child: guiaInfo('assets/images/20_porco.png', '20%', 'Essa é a porcentagem ideal que você reserve da sua renda líquida mensal para viver com tranquilidade e conseguir realizar seus projetos. Poupar significa que você tem dinheiro guardado para te apoiar em momentos de urgência sem precisar recorrer a empréstimos ou linhas de crédito caras, como cheque especial e rotativo do cartão de crédito.')),
                 ],
               )
             ])
       ]),
     );
+  }
+
+  Column guiaInfo(path,String typeInvest, String mesage) {
+    return Column(
+                  children: [
+                    addImg(path),
+                    mediumText(typeInvest, fontColor: Paleta.rosa),
+                    Container(
+                      padding: EdgeInsets.all(20),
+                      child: FormatedText(
+                          mesage,
+                          20,
+                          FontWeight.w400),
+                    ),
+                  ],
+                );
   }
 }
