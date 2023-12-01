@@ -12,5 +12,6 @@ Map<String, WidgetBuilder> routes()
     '/guide': (context) => const GuidePage(),
     '/cadastrar-renda': (context) => const CadastraRenda(),
     '/nova-meta': (context) => const NovaMeta(),
+    '/despesas': (context) => const DespesasPage(),
   };
 }
