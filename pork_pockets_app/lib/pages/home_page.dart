@@ -215,6 +215,15 @@ class HomePage extends StatelessWidget {
             subtitle: FormatedText("Suas metas", 16, FontWeight.bold),
             trailing: const Icon(Icons.arrow_forward, color: Colors.white,),
           ),
+          ListTile(
+            onTap: () {
+              Navigator.pushNamed(context, "/despesas");
+            },
+            leading: const Icon(Icons.shopping_cart_checkout_rounded, color: Colors.white,),
+            title: FormatedText("Despesas", 24, FontWeight.bold),
+            subtitle: FormatedText("Gerencie suas despesas", 16, FontWeight.bold),
+            trailing: const Icon(Icons.arrow_forward, color: Colors.white,),
+          ),
         ],
       ),
     ));
