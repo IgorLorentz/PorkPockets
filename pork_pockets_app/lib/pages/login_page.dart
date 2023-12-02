@@ -17,10 +17,12 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool passwordObscured = true;
+  bool validUser = false;
   final users = UsersRepository().user;
   final _formKey = GlobalKey<FormState>();
-  TextEditingController fieldEmail = TextEditingController();
-  TextEditingController fieldSenha = TextEditingController();
+  final fieldEmail = TextEditingController();
+  final fieldSenha = TextEditingController();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -146,24 +148,27 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _onSubmit(inContext) {
-    if (_formKey.currentState!.validate()) {
-      for (var user in users) {
-        if (user.email == fieldEmail.text && user.senha == fieldSenha.text) {
+  void _onSubmit(inContext) 
+  {
+    if (_formKey.currentState!.validate()) 
+    {
+      for (var user in users) 
+      {
+        if(user.email == fieldEmail.text && user.senha == fieldSenha.text)
+        {
+          validUser = true;
           Navigator.pushNamed(context, "/home", arguments: user);
           break;
         }
       }
-
-      alerta(
-          inContext,
-          FormatedText("Usuário não existe!", 20, FontWeight.bold,
-              fontColor: Paleta.dangerous));
-    } else {
-      alerta(
-          inContext,
-          FormatedText("Formulário inválido!", 20, FontWeight.bold,
-              fontColor: Paleta.dangerous));
+      if(!validUser)
+      {
+        alerta(inContext, FormatedText("Usuário não existe!", 20, FontWeight.bold, fontColor: Paleta.dangerous));
+      }
+    } 
+    else 
+    {
+      alerta(inContext, FormatedText("Formulário inválido!", 20, FontWeight.bold, fontColor: Paleta.dangerous));
     }
   }
 
@@ -181,13 +186,13 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   Navigator.pop(inContext);
                 },
-                child: Text('Cancelar'),
+                child: const Text('Cancelar'),
               ),
               TextButton(
                 onPressed: () {
                   Navigator.pop(inContext);
                 },
-                child: Text('OK'),
+                child: const Text('OK'),
               ),
             ],
           ),

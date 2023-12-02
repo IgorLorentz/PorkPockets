@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pork_pockets_app/models/pessoa.dart';
 import 'package:pork_pockets_app/pages/cadastrar_renda_page.dart';
 import 'package:pork_pockets_app/pages/edit_meta_page.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
@@ -14,6 +15,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = ModalRoute.of(context)!.settings.arguments as Pessoa;
     return Scaffold(
       backgroundColor: Paleta.bgColor,
       appBar: appBar(),
@@ -24,15 +26,15 @@ class HomePage extends StatelessWidget {
             child: Container(
               width: double.infinity,
               child: Column(children: [
-                Row(children: [bigText('Olá User')]),
+                Row(children: [bigText('Olá ${user.nome}')]),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     FormatedText(
-                        'Seu salário: R\$ 1500,00', 20, FontWeight.normal),
+                        'Seu salário: R\$ ${user.salario}', 20, FontWeight.normal),
                     ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, "/cadastrar-renda");
+                          Navigator.pushNamed(context, "/cadastrar-renda", arguments: user);
                         },
                         style: ElevatedButton.styleFrom(
                           shape: const CircleBorder(),
