@@ -1,5 +1,6 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
@@ -25,11 +26,11 @@ class _MetasPageState extends State<MetasPage> {
               Container(
                 width: double.infinity,
                 height: 40,
-                margin: EdgeInsets.only(left: 20, top: 35, bottom: 20),
+                margin: const EdgeInsets.only(left: 20, top: 35, bottom: 20),
                 child: FormatedText("Suas metas:", 40, FontWeight.bold),
               ),
               Container(
-                margin: EdgeInsets.only(right: 30, bottom: 5),
+                margin: const EdgeInsets.only(right: 30, bottom: 5),
                 alignment: Alignment.centerRight,
                 child: ElevatedButton(
                   onPressed: () {
@@ -41,7 +42,7 @@ class _MetasPageState extends State<MetasPage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(15),
+                margin: const EdgeInsets.all(15),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     color: Paleta.azulEscuro),
@@ -54,25 +55,25 @@ class _MetasPageState extends State<MetasPage> {
                             onPressed: () {
                               favorite();
                             },
-                            icon: Icon(Icons.favorite_outline),
+                            icon: const Icon(Icons.favorite_outline),
                             color: Colors.black),
                         IconButton(
                             onPressed: () {
                               print("Edit");
                             },
-                            icon: Icon(Icons.edit),
+                            icon: const Icon(Icons.edit),
                             color: Colors.black),
                       ],
                     ),
                     Container(
-                      margin: EdgeInsets.symmetric(vertical: 0, horizontal: 15),
+                      margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
                       width: double.infinity,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           color: Colors.white),
                       child: Container(
                           padding:
-                              EdgeInsets.symmetric(vertical: 3, horizontal: 8),
+                              const EdgeInsets.symmetric(vertical: 3, horizontal: 8),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15),
                               color: Paleta.verde),
@@ -90,7 +91,7 @@ class _MetasPageState extends State<MetasPage> {
                         onPressed: () {
                           print("Open");
                         },
-                        icon: Icon(Icons.keyboard_arrow_down),
+                        icon: const Icon(Icons.keyboard_arrow_down),
                         color: Colors.black),
                   ],
                 ),
