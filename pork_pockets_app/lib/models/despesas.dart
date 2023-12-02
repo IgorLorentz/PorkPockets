@@ -1,11 +1,9 @@
-class Despesas {
+class Despesa {
   String nome;
   double valor;
 
-  Despesas({
+  Despesa({
     required this.nome,
     required this.valor,
   });
-
-  String getNome() => nome;
 }

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pork_pockets_app/pages/esqueceu_senha.dart';
+import 'package:pork_pockets_app/repositories/users_repository.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/footer.dart';
 import 'package:pork_pockets_app/util/forms_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
+import '../pages/esqueceu_senha.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -16,7 +17,10 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool passwordObscured = true;
+  final users = UsersRepository().user;
   final _formKey = GlobalKey<FormState>();
+  TextEditingController fieldEmail = TextEditingController();
+  TextEditingController fieldSenha = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -144,34 +148,51 @@ class _LoginPageState extends State<LoginPage> {
 
   void _onSubmit(inContext) {
     if (_formKey.currentState!.validate()) {
-      Navigator.pushNamed(context, "/home");
+      for (var user in users) {
+        if (user.email == fieldEmail.text && user.senha == fieldSenha.text) {
+          Navigator.pushNamed(context, "/home", arguments: user);
+          break;
+        }
+      }
+
+      alerta(
+          inContext,
+          FormatedText("Usuário não existe!", 20, FontWeight.bold,
+              fontColor: Paleta.dangerous));
     } else {
-      showDialog(
-        context: inContext,
-        barrierDismissible: false,
-        builder: (inContext) {
-          return WillPopScope(
-            onWillPop: () async => false,
-            child: AlertDialog(
-              title: const Text('Dados Inválidos!'),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(inContext);
-                  },
-                  child: const Text('Cancelar'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(inContext);
-                  },
-                  child: const Text('OK'),
-                ),
-              ],
-            ),
-          );
-        },
-      );
+      alerta(
+          inContext,
+          FormatedText("Formulário inválido!", 20, FontWeight.bold,
+              fontColor: Paleta.dangerous));
     }
+  }
+
+  Future<dynamic> alerta(inContext, erro) {
+    return showDialog(
+      context: inContext,
+      barrierDismissible: false,
+      builder: (inContext) {
+        return WillPopScope(
+          onWillPop: () async => false,
+          child: AlertDialog(
+            title: erro,
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(inContext);
+                },
+                child: Text('Cancelar'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(inContext);
+                },
+                child: Text('OK'),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

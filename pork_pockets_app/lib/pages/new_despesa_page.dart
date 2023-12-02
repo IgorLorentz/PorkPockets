@@ -2,8 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pork_pockets_app/models/despesas.dart';
-import 'package:pork_pockets_app/repositories/despesas_repository.dart';
+import 'package:pork_pockets_app/repositories/users_repository.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/forms_util.dart';
@@ -80,7 +79,7 @@ class _NovaDespesaState extends State<NovaDespesa> {
                           ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  _addDespesa();
+                                  //_addDespesa();
                                   Navigator.pop(context);
                                 });
                               },
@@ -103,7 +102,7 @@ class _NovaDespesaState extends State<NovaDespesa> {
       ),
     );
   }
-
+  /*
   void _addDespesa() {
     // Adiciona a despesa como antes
     if (widget.isDespesaFixa) {
@@ -119,4 +118,5 @@ class _NovaDespesaState extends State<NovaDespesa> {
     // Chama o callback
     widget.onDespesaAdded!();
   }
+  */
 }
