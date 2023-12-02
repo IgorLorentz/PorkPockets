@@ -5,9 +5,14 @@ import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/images_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
 
-class DespesasPage extends StatelessWidget {
+class DespesasPage extends StatefulWidget {
   const DespesasPage({Key? key}) : super(key: key);
 
+  @override
+  State<DespesasPage> createState() => _DespesasPageState();
+}
+
+class _DespesasPageState extends State<DespesasPage> {
   @override
   Widget build(BuildContext context) {
     final fixas = DespesasRepository.despesaFix;

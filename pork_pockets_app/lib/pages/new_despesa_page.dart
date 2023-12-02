@@ -71,11 +71,14 @@ class _NovaDespesaState extends State<NovaDespesa> {
                           const SizedBox(height: 50),
                           ElevatedButton(
                               onPressed: () {
-                                DespesasRepository.addDespesaFix(Despesas(
-                                    nome: nomeController.text,
-                                    valor: double.parse(valorController.text)));
-                                print(DespesasRepository.despesaFix);
-                                Navigator.pop(context);
+                                setState(() {
+                                  DespesasRepository.addDespesaFix(Despesas(
+                                      nome: nomeController.text,
+                                      valor:
+                                          double.parse(valorController.text)));
+                                  print(DespesasRepository.despesaFix[3].nome);
+                                  Navigator.pop(context);
+                                });
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Paleta.azulEscurao,
