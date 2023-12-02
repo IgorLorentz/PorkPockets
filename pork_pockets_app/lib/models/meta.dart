@@ -1,23 +1,8 @@
 class Meta {
-  String nomeMeta;
+  String nome;
   double valor;
-  bool favorite;
-
-  Meta({
-    required this.nomeMeta,
-    required this.valor,
-    this.favorite = false,
-  });
-
-  String getNome() {
-    return this.nomeMeta;
-  }
-
-  double getValor() {
-    return this.valor;
-  }
-
-  bool getFavorite(){
-    return this.favorite;
-  }
+  bool isFavorited;
+  bool isExpanded;
+  
+  Meta({required this.nome, required this.valor, this.isFavorited = false, this.isExpanded = false});
 }

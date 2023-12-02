@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:pork_pockets_app/models/meta.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
@@ -13,8 +14,13 @@ class MetasPage extends StatefulWidget {
 }
 
 class _MetasPageState extends State<MetasPage> {
-  bool _isExpanded = false;
-  bool _isFavorite = false;
+  List<Meta> metas = 
+  [
+    Meta(nome: "Carro", valor: 100.000),
+    Meta(nome: "Moto", valor: 18.000),
+    Meta(nome: "Celular", valor: 2.500),
+    Meta(nome: "Notebook", valor: 3.750),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +52,10 @@ class _MetasPageState extends State<MetasPage> {
                 ),
               ),
               
-              meta(context),
-              meta(context),
-              meta(context),
-              meta(context),
+              meta(context, metas[0]),
+              meta(context, metas[1]),
+              meta(context, metas[2]),
+              meta(context, metas[3]),
             ],
           )
         ],
@@ -57,7 +63,7 @@ class _MetasPageState extends State<MetasPage> {
     );
   }
 
-  Container meta(BuildContext context) {
+  Container meta(BuildContext context, Meta meta) {
     return Container(
               margin: const EdgeInsets.only(left: 15, right: 15, top: 15),
               decoration: BoxDecoration(
@@ -71,7 +77,7 @@ class _MetasPageState extends State<MetasPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       
                       children: [
-                        FormatedText("Meta: Moto", 20, FontWeight.normal),
+                        FormatedText("Meta: ${meta.nome}", 20, FontWeight.normal),
                         
                         Row
                         (
@@ -83,10 +89,12 @@ class _MetasPageState extends State<MetasPage> {
                             (
                               onPressed: () 
                               {
-                                setState(() => _isFavorite = !_isFavorite);
+                                print(meta.isFavorited);
+                                setState(() => meta.isFavorited = !meta.isFavorited);
+                                
                               },
-                              icon: Icon(_isFavorite ? Icons.favorite_outline : Icons.favorite),
-                              color: _isFavorite ? Colors.black : Paleta.rosa,
+                              icon: Icon(meta.isFavorited ? Icons.favorite : Icons.favorite_outline),
+                              color: meta.isFavorited ? Paleta.rosa : Colors.black,
                             ),
                                                   
                             IconButton
@@ -118,7 +126,7 @@ class _MetasPageState extends State<MetasPage> {
                           children: [
                             FormatedText("R\$ 12.000", 14, FontWeight.normal,
                                 fontColor: Colors.black),
-                            FormatedText("R\$ 12.000", 14, FontWeight.normal,
+                            FormatedText("R\$ ${meta.valor}", 14, FontWeight.normal,
                                 fontColor: Colors.black)
                           ],
                         )),
@@ -126,15 +134,16 @@ class _MetasPageState extends State<MetasPage> {
                   
                   ExpandIcon
                   (
-                    isExpanded: _isExpanded,
+                    isExpanded: meta.isExpanded,
                     color: Colors.black,
                     expandedColor: Colors.black,
                     onPressed: (bool isExpanded)
                     {
-                      setState(() => _isExpanded = !isExpanded);
+                      setState(() => meta.isExpanded = !meta.isExpanded);
                     },
                   ),
-                  if(_isExpanded)
+
+                  if(meta.isExpanded)
                       Container
                       (
                         //margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 25),
