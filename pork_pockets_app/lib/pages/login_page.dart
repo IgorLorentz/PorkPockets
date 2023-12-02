@@ -5,7 +5,6 @@ import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/footer.dart';
 import 'package:pork_pockets_app/util/forms_util.dart';
-import 'package:pork_pockets_app/util/pages.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
 
 class LoginPage extends StatefulWidget {
@@ -33,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
                   children: [
-                    SvgPicture.asset('assets/images/flying_pig.svg'),
+                    SvgPicture.asset('images/flying_pig.svg'),
                     const SizedBox(
                       height: 62,
                     ),
@@ -48,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(height: 15),
                     Row(
                       children: [
-                        FormatedText("Insira uma senha:", 20, FontWeight.bold),
+                        FormatedText("Insira sua senha:", 20, FontWeight.bold),
                       ],
                     ),
                     TextFormField(
@@ -85,13 +84,13 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Container(
-                          margin: EdgeInsets.only(top: 10),
+                          margin: const EdgeInsets.only(top: 10),
                           child: TextButton(
                             onPressed: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => EsqueceuSenha(),
+                                  builder: (context) => const EsqueceuSenha(),
                                 ),
                               );
                             },
@@ -110,8 +109,11 @@ class _LoginPageState extends State<LoginPage> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Paleta.azulEscurao,
                         ),
-                        child: FormatedText("Login", 24, FontWeight.bold)),
-                    const SizedBox(height: 25),
+                        child: Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: mediumText("Login", fontColor: Colors.white),
+                        )),
+                    const SizedBox(height: 15),
                     ElevatedButton(
                         onPressed: () {
                           Navigator.pushNamed(context, "/register");
@@ -119,8 +121,12 @@ class _LoginPageState extends State<LoginPage> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromARGB(70, 1, 31, 38),
                         ),
-                        child:
-                            FormatedText("Cadastre-se", 24, FontWeight.bold)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: mediumText("Cadastre-se",
+                              fontColor: Colors.white),
+                        )),
+                    const SizedBox(height: 50),
                   ],
                 ),
               ),
@@ -143,19 +149,19 @@ class _LoginPageState extends State<LoginPage> {
           return WillPopScope(
             onWillPop: () async => false,
             child: AlertDialog(
-              title: Text('Dados Inválidos!'),
+              title: const Text('Dados Inválidos!'),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.pop(inContext);
                   },
-                  child: Text('Cancelar'),
+                  child: const Text('Cancelar'),
                 ),
                 TextButton(
                   onPressed: () {
                     Navigator.pop(inContext);
                   },
-                  child: Text('OK'),
+                  child: const Text('OK'),
                 ),
               ],
             ),
