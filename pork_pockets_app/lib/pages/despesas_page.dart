@@ -109,7 +109,7 @@ class _DespesasPageState extends State<DespesasPage> {
             Column(
               children: [
                 Container(
-                    height: 179,
+                    height: 279,
                     width: 420,
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(200, 2, 94, 115),

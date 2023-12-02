@@ -50,7 +50,7 @@ class _NovaMetaState extends State<NovaMeta> {
                           const SizedBox(height: 50),
                           mediumText("Insira um nome:",
                               fontColor: Colors.black),
-                          ValueForm(TextInputAction.next, false),
+                          NameForm(TextInputAction.next, false),
                           const SizedBox(height: 30),
                           mediumText("Insira um valor:",
                               fontColor: Colors.black),

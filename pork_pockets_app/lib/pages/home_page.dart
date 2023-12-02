@@ -143,6 +143,9 @@ class HomePage extends StatelessWidget {
       child: ListView(
         children: [
           const UserAccountsDrawerHeader(
+            decoration: BoxDecoration(
+              color: Color.fromARGB(200, 1, 31, 38),
+            ),
             accountName: Text("Seu nome e sobrenome"),
             accountEmail: Text("seuemail@mail.com"),
           ),
