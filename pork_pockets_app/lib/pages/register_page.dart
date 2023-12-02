@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/forms_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
@@ -24,13 +25,7 @@ class _RegisterPageState extends State<RegisterPage>
     (
       backgroundColor: Paleta.bgColor,
 
-      appBar: AppBar
-      (
-        backgroundColor: Paleta.bgColor,
-
-        title: const Text("PorkPocket\$"),
-        centerTitle: true,
-      ),
+      appBar: appBar(),
 
       body: SingleChildScrollView
       (
@@ -50,25 +45,25 @@ class _RegisterPageState extends State<RegisterPage>
             
                 const SizedBox(height: 35),
             
-                FormatedText("Insira seu nome completo", 20, FontWeight.bold),
+                Container(width: double.infinity, child: FormatedText("Insira seu nome completo", 20, FontWeight.bold)),
             
                 NameForm(TextInputAction.next, true),
 
                 const SizedBox(height: 15),
 
-                FormatedText("Insira seu e-mail", 20, FontWeight.bold),
+                Container(width: double.infinity, child: FormatedText("Insira seu e-mail", 20, FontWeight.bold)),
 
                 EmailForm(TextInputAction.next, false),
 
                 const SizedBox(height: 15),
 
-                FormatedText("Insira uma senha", 20, FontWeight.bold),
+                Container(width: double.infinity, child: FormatedText("Insira uma senha", 20, FontWeight.bold)),
 
                 passwordForm(TextInputAction.next),
 
                 const SizedBox(height: 15),
 
-                FormatedText("Confirme sua senha", 20, FontWeight.bold),
+                Container(width: double.infinity, child: FormatedText("Confirme sua senha", 20, FontWeight.bold)),
 
                 passwordForm(TextInputAction.done),
 
