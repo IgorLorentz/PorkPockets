@@ -1,7 +1,6 @@
 import 'package:pork_pockets_app/models/despesas.dart';
 
-class DespesasRepository{
-
+class DespesasRepository {
   static List<Despesas> despesaFix = [
     Despesas(nome: 'Luz', valor: 200),
     Despesas(nome: 'Água', valor: 150),
@@ -13,4 +12,7 @@ class DespesasRepository{
     Despesas(nome: 'Bar', valor: 200)
   ];
 
+  static void addDespesaFix(Despesas despesa) {
+    despesaFix.add(despesa);
+  }
 }
