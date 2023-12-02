@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pork_pockets_app/pages/new_despesa_page.dart';
 import 'util/pages.dart';
 
 Map<String, WidgetBuilder> routes() 
@@ -14,5 +15,6 @@ Map<String, WidgetBuilder> routes()
     '/guide': (context) => const GuidePage(),
     '/cadastrar-renda': (context) => const CadastraRenda(),
     '/despesas': (context) => const DespesasPage(),
+    '/nova-despesa': (context) => const NovaDespesa(),
   };
 }

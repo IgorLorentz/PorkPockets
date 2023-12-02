@@ -72,7 +72,7 @@ class DespesasPage extends StatelessWidget {
                 ),
                 child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, "/cadastrar-renda");
+                      Navigator.pushNamed(context, "/nova-despesa");
                     },
                     style: ElevatedButton.styleFrom(
                       shape: const CircleBorder(),
@@ -136,7 +136,7 @@ class DespesasPage extends StatelessWidget {
                 ),
                 child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, "/nova-meta");
+                      Navigator.pushNamed(context, "/nova-despesa");
                     },
                     style: ElevatedButton.styleFrom(
                       shape: CircleBorder(),

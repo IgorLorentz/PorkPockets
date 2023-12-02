@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:pork_pockets_app/pages/validator.dart';
 
 final Validation validar = Validation();
-TextFormField NameForm(TextInputAction textInputAction, bool autofocus,
-    TextEditingController? controller) {
+TextFormField NameForm(
+  TextInputAction textInputAction,
+  bool autofocus,
+) {
   return TextFormField(
-    controller: controller,
     validator: (nome) => validar.campoNome(nome.toString()),
     textInputAction: TextInputAction.next,
     keyboardType: TextInputType.text,
@@ -107,6 +108,27 @@ TextFormField ValueForm(TextInputAction textInputAction, bool autofocus) {
     keyboardType: TextInputType.number,
     autofocus: autofocus,
     decoration: const InputDecoration(
+      border: OutlineInputBorder(borderSide: BorderSide()),
+      fillColor: Colors.white,
+      filled: true,
+    ),
+    style: const TextStyle(
+      fontFamily: "Josefin",
+      fontWeight: FontWeight.bold,
+    ),
+  );
+}
+
+TextFormField despesaForm(TextInputAction textInputAction, bool autofocus,
+    TextEditingController? controller) {
+  return TextFormField(
+    controller: controller,
+    validator: (nome) => validar.campoNome(nome.toString()),
+    textInputAction: TextInputAction.next,
+    keyboardType: TextInputType.text,
+    autofocus: autofocus,
+    decoration: const InputDecoration(
+      hintText: "Nome Completo",
       border: OutlineInputBorder(borderSide: BorderSide()),
       fillColor: Colors.white,
       filled: true,
