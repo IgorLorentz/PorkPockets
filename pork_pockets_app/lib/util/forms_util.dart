@@ -160,3 +160,21 @@ TextFormField despesaForm(String atributo, TextInputAction textInputAction, bool
     ),
   );
 }
+
+TextFormField ValueFormController(TextInputAction textInputAction, bool autofocus, TextEditingController controller) {
+  return TextFormField(
+    controller: controller,
+    textInputAction: textInputAction,
+    keyboardType: TextInputType.number,
+    autofocus: autofocus,
+    decoration: const InputDecoration(
+      border: OutlineInputBorder(borderSide: BorderSide()),
+      fillColor: Colors.white,
+      filled: true,
+    ),
+    style: const TextStyle(
+      fontFamily: "Josefin",
+      fontWeight: FontWeight.bold,
+    ),
+  );
+}

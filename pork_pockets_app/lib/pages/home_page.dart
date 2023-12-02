@@ -10,9 +10,14 @@ import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/images_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final user = ModalRoute.of(context)!.settings.arguments as Pessoa;
@@ -30,11 +35,20 @@ class HomePage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    FormatedText(
-                        'Seu salário: R\$ ${user.salario}', 20, FontWeight.normal),
+                    FormatedText('Seu salário: R\$ ${user.salario}', 20,
+                        FontWeight.normal),
                     ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, "/cadastrar-renda", arguments: user);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CadastraRenda(
+                                user: user,
+                                onEdited: () => setState(() {}),
+                                // Para despesas fixas
+                              ),
+                            ),
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           shape: const CircleBorder(),
@@ -134,22 +148,22 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      drawer: drawer(context),
+      drawer: drawer(context, user),
     );
   }
 
-  SafeArea drawer(BuildContext context) {
+  SafeArea drawer(BuildContext context, Pessoa user) {
     return SafeArea(
         child: Drawer(
       backgroundColor: Paleta.bgColor,
       child: ListView(
         children: [
-          const UserAccountsDrawerHeader(
-            decoration: BoxDecoration(
+          UserAccountsDrawerHeader(
+            decoration: const BoxDecoration(
               color: Color.fromARGB(200, 1, 31, 38),
             ),
-            accountName: Text("Seu nome e sobrenome"),
-            accountEmail: Text("seuemail@mail.com"),
+            accountName: mediumText(user.nome),
+            accountEmail: mediumText(user.email),
           ),
           ListTile(
               onTap: () {
@@ -182,7 +196,7 @@ class HomePage extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.pushNamed(context, "/despesas");
+              Navigator.pushNamed(context, "/despesas", arguments: user);
             },
             leading: const Icon(
               Icons.shopping_cart_checkout_rounded,
