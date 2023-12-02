@@ -53,6 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                     TextFormField(
+                      
                       onFieldSubmitted: (value) {
                         _onSubmit(context);
                       },
@@ -72,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                             icon: Icon(passwordObscured
                                 ? Icons.visibility_off
                                 : Icons.visibility),
-                            onPressed: () {},
+                            onPressed: () {setState(() => passwordObscured = !passwordObscured );},
                           )),
                       style: const TextStyle(
                         fontFamily: "Josefin",
