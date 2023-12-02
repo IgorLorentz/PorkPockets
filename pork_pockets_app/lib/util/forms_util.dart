@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:pork_pockets_app/pages/validator.dart';
 
 final Validation validar = Validation();
-TextFormField NameForm(TextInputAction textInputAction, bool autofocus) {
+TextFormField NameForm(TextInputAction textInputAction, bool autofocus,
+    TextEditingController? controller) {
   return TextFormField(
+    controller: controller,
     validator: (nome) => validar.campoNome(nome.toString()),
     textInputAction: TextInputAction.next,
     keyboardType: TextInputType.text,

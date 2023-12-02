@@ -7,7 +7,5 @@ class Despesas {
     required this.valor,
   });
 
-  String getNome() {
-    return this.nome;
-  }
+  String getNome() => nome;
 }
