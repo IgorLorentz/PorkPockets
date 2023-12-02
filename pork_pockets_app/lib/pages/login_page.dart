@@ -22,7 +22,6 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final fieldEmail = TextEditingController();
   final fieldSenha = TextEditingController();
-  
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +50,8 @@ class _LoginPageState extends State<LoginPage> {
                               "Insira seu e-mail:", 20, FontWeight.bold),
                         ],
                       ),
-                      EmailForm(TextInputAction.next, true),
+                      EmailFormController(
+                          TextInputAction.next, true, fieldEmail),
                       const SizedBox(height: 15),
                       Row(
                         children: [
@@ -69,6 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                         keyboardType: TextInputType.number,
                         autofocus: false,
                         obscureText: passwordObscured,
+                        controller: fieldSenha,
                         decoration: InputDecoration(
                             hintText: "Password",
                             border: const OutlineInputBorder(
@@ -148,27 +149,26 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _onSubmit(inContext) 
-  {
-    if (_formKey.currentState!.validate()) 
-    {
-      for (var user in users) 
-      {
-        if(user.email == fieldEmail.text && user.senha == fieldSenha.text)
-        {
+  void _onSubmit(inContext) {
+    if (_formKey.currentState!.validate()) {
+      for (var user in users) {
+        if (user.email == fieldEmail.text && user.senha == fieldSenha.text) {
           validUser = true;
           Navigator.pushNamed(context, "/home", arguments: user);
           break;
         }
       }
-      if(!validUser)
-      {
-        alerta(inContext, FormatedText("Usuário não existe!", 20, FontWeight.bold, fontColor: Paleta.dangerous));
+      if (!validUser) {
+        alerta(
+            inContext,
+            FormatedText("Usuário não existe!", 20, FontWeight.bold,
+                fontColor: Paleta.dangerous));
       }
-    } 
-    else 
-    {
-      alerta(inContext, FormatedText("Formulário inválido!", 20, FontWeight.bold, fontColor: Paleta.dangerous));
+    } else {
+      alerta(
+          inContext,
+          FormatedText("Formulário inválido!", 20, FontWeight.bold,
+              fontColor: Paleta.dangerous));
     }
   }
 
