@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pork_pockets_app/pages/esqueceu_senha.dart';
+import 'package:pork_pockets_app/repositories/users_repository.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/footer.dart';
@@ -16,10 +16,15 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool passwordObscured = true;
+  final users = UsersRepository().user;
   final _formKey = GlobalKey<FormState>();
+  TextEditingController fieldEmail = TextEditingController();
+  TextEditingController fieldSenha = TextEditingController();
+  
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Paleta.bgColor,
       appBar: appBar(),
@@ -32,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
                   children: [
-                    SvgPicture.asset('images/flying_pig.svg'),
+                    SvgPicture.asset('assets/images/flying_pig.svg'),
                     const SizedBox(
                       height: 62,
                     ),
@@ -43,14 +48,15 @@ class _LoginPageState extends State<LoginPage> {
                         FormatedText("Insira seu e-mail:", 20, FontWeight.bold),
                       ],
                     ),
-                    EmailForm(TextInputAction.next, true),
+                    EmailFormController(TextInputAction.next, true, fieldEmail),
                     const SizedBox(height: 15),
                     Row(
                       children: [
-                        FormatedText("Insira sua senha:", 20, FontWeight.bold),
+                        FormatedText("Insira uma senha:", 20, FontWeight.bold),
                       ],
                     ),
                     TextFormField(
+                      
                       onFieldSubmitted: (value) {
                         _onSubmit(context);
                       },
@@ -60,6 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                       keyboardType: TextInputType.number,
                       autofocus: false,
                       obscureText: passwordObscured,
+                      controller: fieldSenha,
                       decoration: InputDecoration(
                           hintText: "Password",
                           border: const OutlineInputBorder(
@@ -70,10 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                             icon: Icon(passwordObscured
                                 ? Icons.visibility_off
                                 : Icons.visibility),
-                            onPressed: () {
-                              setState(
-                                  () => passwordObscured = !passwordObscured);
-                            },
+                            onPressed: () {setState(() => passwordObscured = !passwordObscured );},
                           )),
                       style: const TextStyle(
                         fontFamily: "Josefin",
@@ -83,22 +87,8 @@ class _LoginPageState extends State<LoginPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(top: 10),
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const EsqueceuSenha(),
-                                ),
-                              );
-                            },
-                            child: FormatedText(
-                                'Esqueceu a senha', 20, FontWeight.bold,
-                                fontColor: Colors.black),
-                          ),
-                        ),
+                        FormatedText('Esqueceu a senha', 20, FontWeight.normal,
+                            fontColor: Paleta.azulEscurao),
                       ],
                     ),
                     const SizedBox(height: 25),
@@ -109,11 +99,8 @@ class _LoginPageState extends State<LoginPage> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Paleta.azulEscurao,
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: mediumText("Login", fontColor: Colors.white),
-                        )),
-                    const SizedBox(height: 15),
+                        child: FormatedText("Login", 24, FontWeight.bold)),
+                    const SizedBox(height: 25),
                     ElevatedButton(
                         onPressed: () {
                           Navigator.pushNamed(context, "/register");
@@ -121,12 +108,8 @@ class _LoginPageState extends State<LoginPage> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromARGB(70, 1, 31, 38),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: mediumText("Cadastre-se",
-                              fontColor: Colors.white),
-                        )),
-                    const SizedBox(height: 50),
+                        child:
+                            FormatedText("Cadastre-se", 24, FontWeight.bold)),
                   ],
                 ),
               ),
@@ -138,36 +121,53 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _onSubmit(inContext) {
-    if (_formKey.currentState!.validate()) {
-      Navigator.pushNamed(context, "/home");
-    } else {
-      showDialog(
-        context: inContext,
-        barrierDismissible: false,
-        builder: (inContext) {
-          return WillPopScope(
-            onWillPop: () async => false,
-            child: AlertDialog(
-              title: const Text('Dados Inválidos!'),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(inContext);
-                  },
-                  child: const Text('Cancelar'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(inContext);
-                  },
-                  child: const Text('OK'),
-                ),
-              ],
-            ),
-          );
-        },
-      );
+  void _onSubmit(inContext) 
+  {
+    if (_formKey.currentState!.validate()) 
+    {
+      for (var user in users) 
+      {
+        if(user.email == fieldEmail.text && user.senha == fieldSenha.text)
+        {
+          Navigator.pushNamed(context, "/home", arguments: user);
+          break;
+        }
+      }
+
+      alerta(inContext, FormatedText("Usuário não existe!", 20, FontWeight.bold, fontColor: Paleta.dangerous));
+    } 
+    else 
+    {
+      alerta(inContext, FormatedText("Formulário inválido!", 20, FontWeight.bold, fontColor: Paleta.dangerous));
     }
+  }
+
+  Future<dynamic> alerta(inContext, erro) {
+    return showDialog(
+      context: inContext,
+      barrierDismissible: false,
+      builder: (inContext) {
+        return WillPopScope(
+          onWillPop: () async => false,
+          child: AlertDialog(
+            title: erro,
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(inContext);
+                },
+                child: Text('Cancelar'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(inContext);
+                },
+                child: Text('OK'),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

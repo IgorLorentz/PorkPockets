@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pork_pockets_app/pages/new_despesa_page.dart';
-import 'package:pork_pockets_app/repositories/despesas_repository.dart';
+import 'package:pork_pockets_app/repositories/users_repository.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/images_util.dart';
@@ -16,8 +16,8 @@ class DespesasPage extends StatefulWidget {
 class _DespesasPageState extends State<DespesasPage> {
   @override
   Widget build(BuildContext context) {
-    final fixas = DespesasRepository.despesaFix;
-    final variaveis = DespesasRepository.despesaVar;
+    final fixas = UsersRepository().user[0].despesasFixas;
+    final variaveis = UsersRepository().user[0].despesasVars;
 
     return Scaffold(
       backgroundColor: Paleta.bgColor,
