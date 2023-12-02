@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pork_pockets_app/pages/esqueceu_senha.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/footer.dart';
@@ -17,11 +18,9 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool passwordObscured = true;
   final _formKey = GlobalKey<FormState>();
-  
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Paleta.bgColor,
       appBar: appBar(),
@@ -53,7 +52,6 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                     TextFormField(
-                      
                       onFieldSubmitted: (value) {
                         _onSubmit(context);
                       },
@@ -73,7 +71,10 @@ class _LoginPageState extends State<LoginPage> {
                             icon: Icon(passwordObscured
                                 ? Icons.visibility_off
                                 : Icons.visibility),
-                            onPressed: () {setState(() => passwordObscured = !passwordObscured );},
+                            onPressed: () {
+                              setState(
+                                  () => passwordObscured = !passwordObscured);
+                            },
                           )),
                       style: const TextStyle(
                         fontFamily: "Josefin",
@@ -83,8 +84,22 @@ class _LoginPageState extends State<LoginPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        FormatedText('Esqueceu a senha', 20, FontWeight.normal,
-                            fontColor: Paleta.azulEscurao),
+                        Container(
+                          margin: EdgeInsets.only(top: 10),
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => EsqueceuSenha(),
+                                ),
+                              );
+                            },
+                            child: FormatedText(
+                                'Esqueceu a senha', 20, FontWeight.bold,
+                                fontColor: Colors.black),
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 25),
