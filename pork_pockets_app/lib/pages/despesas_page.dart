@@ -16,8 +16,8 @@ class DespesasPage extends StatefulWidget {
 class _DespesasPageState extends State<DespesasPage> {
   @override
   Widget build(BuildContext context) {
-    final fixas = UsersRepository().user[0].despesasFixas;
-    final variaveis = UsersRepository().user[0].despesasVars;
+    final fixas = UsersRepository.instance.user[0].despesasFixas;
+    final variaveis = UsersRepository.instance.user[0].despesasVars;
 
     return Scaffold(
       backgroundColor: Paleta.bgColor,

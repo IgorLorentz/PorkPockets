@@ -17,7 +17,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool passwordObscured = true;
   bool validUser = false;
-  final users = UsersRepository().user;
+  final users = UsersRepository.instance.user;
   final _formKey = GlobalKey<FormState>();
   final fieldEmail = TextEditingController();
   final fieldSenha = TextEditingController();
