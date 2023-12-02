@@ -17,114 +17,118 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Paleta.bgColor,
       appBar: appBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Center(
-          child: Container(
-            width: double.infinity,
-            child: Column(children: [
-              Row(children: [bigText('Olá User')]),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  FormatedText(
-                      'Seu salário: R\$ 1500,00', 20, FontWeight.normal),
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, "/cadastrar-renda");
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: const CircleBorder(),
-                        backgroundColor: Paleta.verde,
-                      ),
-                      child: const Icon(Icons.edit,
-                          color: Color.fromARGB(500, 1, 31, 38)))
-                ],
-              ),
-              const SizedBox(height: 30),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Center(
+            child: Container(
+              width: double.infinity,
+              child: Column(children: [
+                Row(children: [bigText('Olá User')]),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    card('Necessidades', '50', 'images/50_porco.png', 1000),
-                    card('Lazer', '30', 'images/30_porco.png', 300),
-                    card('Poupança', '20', 'images/20_porco.png', 200),
+                    FormatedText(
+                        'Seu salário: R\$ 1500,00', 20, FontWeight.normal),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, "/cadastrar-renda");
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: const CircleBorder(),
+                          backgroundColor: Paleta.verde,
+                        ),
+                        child: const Icon(Icons.edit,
+                            color: Color.fromARGB(500, 1, 31, 38)))
                   ],
                 ),
-              ),
-              const SizedBox(height: 30),
-              Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Paleta.azulEscuro),
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
+                const SizedBox(height: 30),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          mediumText("Meta Atual: Moto"),
-                          Row(
-                            children: [
-                              IconButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              const EditMetaPage(),
-                                        ));
-                                  },
-                                  icon: const Icon(Icons.edit)),
-                              IconButton(
-                                  onPressed: () {
-                                    print("Favorite");
-                                  },
-                                  icon: const Icon(Icons.favorite_outline)),
-                            ],
-                          )
-                        ],
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: Colors.white),
-                        child: Container(
-                            padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: Paleta.verde),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                mediumText("R\$ 734,85",
-                                    fontColor: Colors.black),
-                                mediumText('R\$ 1000,00',
-                                    fontColor: Colors.black)
-                              ],
-                            )),
-                      ),
-                      const SizedBox(height: 10),
-                      IconButton(
-                          onPressed: () {
-                            print("Open");
-                          },
-                          icon: const Icon(
-                            Icons.keyboard_arrow_down,
-                            color: Colors.black,
-                          )),
+                      card('Necessidades', '50', 'images/50_porco.png', 1000),
+                      card('Lazer', '30', 'images/30_porco.png', 300),
+                      card('Poupança', '20', 'images/20_porco.png', 200),
                     ],
                   ),
                 ),
-              ),
-              Column(
-                children: [
-                  bigText('Reserva'),
-                ],
-              ),
-            ]),
+                const SizedBox(height: 30),
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Paleta.azulEscuro),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            mediumText("Meta Atual: Moto"),
+                            Row(
+                              children: [
+                                IconButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const EditMetaPage(),
+                                          ));
+                                    },
+                                    icon: const Icon(Icons.edit)),
+                                IconButton(
+                                    onPressed: () {
+                                      print("Favorite");
+                                    },
+                                    icon: const Icon(Icons.favorite_outline)),
+                              ],
+                            )
+                          ],
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: Colors.white),
+                          child: Container(
+                              padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Paleta.verde),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  mediumText("R\$ 734,85",
+                                      fontColor: Colors.black),
+                                  mediumText('R\$ 1000,00',
+                                      fontColor: Colors.black)
+                                ],
+                              )),
+                        ),
+                        const SizedBox(height: 10),
+                        IconButton(
+                            onPressed: () {
+                              print("Open");
+                            },
+                            icon: const Icon(
+                              Icons.keyboard_arrow_down,
+                              color: Colors.black,
+                            )),
+                      ],
+                    ),
+                  ),
+                ),
+                Column(
+                  children: [
+                    bigText('Reserva'),
+                    Image.asset('images/jarra.png'),
+                  ],
+                ),
+              ]),
+            ),
           ),
         ),
       ),
