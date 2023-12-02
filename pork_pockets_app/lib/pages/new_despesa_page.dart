@@ -11,8 +11,10 @@ import 'package:pork_pockets_app/util/text_util.dart';
 
 class NovaDespesa extends StatefulWidget {
   final Function()? onDespesaAdded;
+  final bool isDespesaFixa;
 
-  const NovaDespesa({super.key, this.onDespesaAdded});
+  const NovaDespesa(
+      {super.key, this.onDespesaAdded, this.isDespesaFixa = true});
 
   @override
   State<NovaDespesa> createState() => _NovaDespesaState();
@@ -104,8 +106,15 @@ class _NovaDespesaState extends State<NovaDespesa> {
 
   void _addDespesa() {
     // Adiciona a despesa como antes
-    DespesasRepository.despesaFix.add(Despesas(
-        nome: nomeController.text, valor: double.parse(valorController.text)));
+    if (widget.isDespesaFixa) {
+      DespesasRepository.despesaFix.add(Despesas(
+          nome: nomeController.text,
+          valor: double.parse(valorController.text)));
+    } else {
+      DespesasRepository.despesaVar.add(Despesas(
+          nome: nomeController.text,
+          valor: double.parse(valorController.text)));
+    }
 
     // Chama o callback
     widget.onDespesaAdded!();
