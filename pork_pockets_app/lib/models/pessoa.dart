@@ -1,30 +1,34 @@
-class Pessoa{
+import 'package:pork_pockets_app/models/despesas.dart';
+import 'package:pork_pockets_app/models/meta.dart';
+
+class Pessoa {
   String nome;
   String email;
   String senha;
   double salario;
+  late List<Despesa> despesasFixas;
+  late List<Despesa> despesasVars;
+  late List<Meta> metas;
 
-Pessoa({
-  required this.nome,
-  required this.email,
-  required this.senha,
-  this.salario = 0000.00,
-});
+  Pessoa({
+    required this.nome,
+    required this.email,
+    required this.senha,
+    this.salario = 0000.00,
+  });
 
-String getNome(){
-  return this.nome;
-}
+  void setDespesasFixas(Despesa despesa)
+  {
+    despesasFixas.add(despesa);
+  }
 
-String getEmail(){
-  return this.email;
-}
+  void setDespesasVars(Despesa despesa)
+  {
+    despesasVars.add(despesa);
+  }
 
-String getSenha(){
-  return this.senha;
-}
-
-double getSalario(){
-  return this.salario;
-}
-
+  void setMetas(Meta meta)
+  {
+    metas.add(meta);
+  }
 }
