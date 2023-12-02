@@ -6,9 +6,9 @@ class Pessoa {
   String email;
   String senha;
   double salario;
-  late List<Despesa> despesasFixas;
-  late List<Despesa> despesasVars;
-  late List<Meta> metas;
+  List<Despesa> despesasFixas = [];
+  List<Despesa> despesasVars = [];
+  List<Meta> metas = [];
 
   Pessoa({
     required this.nome,

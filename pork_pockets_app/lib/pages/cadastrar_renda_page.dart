@@ -1,13 +1,16 @@
 // ignore_for_file: sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:pork_pockets_app/models/pessoa.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/forms_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
 
 class CadastraRenda extends StatefulWidget {
-  const CadastraRenda({super.key});
+  final Function()? onEdited;
+  final Pessoa? user;
+  const CadastraRenda({super.key, this.user,this.onEdited});
 
   @override
   State<CadastraRenda> createState() => _CadastraRendaState();
@@ -15,9 +18,11 @@ class CadastraRenda extends StatefulWidget {
 
 class _CadastraRendaState extends State<CadastraRenda> {
   final _rendaFormKey = GlobalKey<FormState>();
+  final fieldSalario = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    //final user = ModalRoute.of(context)!.settings.arguments as Pessoa;
     return Scaffold(
       backgroundColor: Paleta.bgColor,
       appBar: appBar(),
@@ -33,16 +38,17 @@ class _CadastraRendaState extends State<CadastraRenda> {
                       bigText("Insira seus dados!"),
                       const SizedBox(height: 50),
                       mediumText("Seu salário", fontColor: Colors.black),
-                      currencyForm(TextInputAction.next, false),
+                      ValueFormController(TextInputAction.next, false, fieldSalario),
                       const SizedBox(height: 30),
                       mediumText("Data de pagamento", fontColor: Colors.black),
                       dateForm(TextInputAction.next, false),
                       const SizedBox(height: 30),
-                      mediumText("Confirme sua senha", fontColor: Colors.black),
-                      passwordForm(TextInputAction.next, false, true),
-                      const SizedBox(height: 50),
                       ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            widget.user!.salario = double.parse(fieldSalario.text);
+                            Navigator.pop(context);
+
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Paleta.azulEscurao,
                           ),
@@ -58,4 +64,5 @@ class _CadastraRendaState extends State<CadastraRenda> {
       ),
     );
   }
+  
 }

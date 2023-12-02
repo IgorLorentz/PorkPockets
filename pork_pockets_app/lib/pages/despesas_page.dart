@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pork_pockets_app/models/pessoa.dart';
 import 'package:pork_pockets_app/pages/new_despesa_page.dart';
 import 'package:pork_pockets_app/repositories/users_repository.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
@@ -16,8 +17,7 @@ class DespesasPage extends StatefulWidget {
 class _DespesasPageState extends State<DespesasPage> {
   @override
   Widget build(BuildContext context) {
-    final fixas = UsersRepository().user[0].despesasFixas;
-    final variaveis = UsersRepository().user[0].despesasVars;
+    final user = ModalRoute.of(context)!.settings.arguments as Pessoa;
 
     return Scaffold(
       backgroundColor: Paleta.bgColor,
@@ -52,11 +52,11 @@ class _DespesasPageState extends State<DespesasPage> {
                             borderRadius: BorderRadius.circular(15),
                           ),
                           child: mediumText(
-                              'Conta: ${fixas[despesas].nome}\nValor: R\$ ${fixas[despesas].valor}'));
+                              'Conta: ${user.despesasFixas[despesas].nome}\nValor: R\$ ${user.despesasFixas[despesas].valor}'));
                     },
                     separatorBuilder: (_, __) => const Divider(),
                     padding: const EdgeInsets.all(10),
-                    itemCount: fixas.length,
+                    itemCount: user.despesasFixas.length,
                   ),
                 )
               ],
@@ -81,7 +81,7 @@ class _DespesasPageState extends State<DespesasPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => NovaDespesa(
+                          builder: (context) => NovaDespesa(user: user,
                             onDespesaAdded: () => setState(() {}),
                             isDespesaFixa: true, // Para despesas fixas
                           ),
@@ -123,13 +123,13 @@ class _DespesasPageState extends State<DespesasPage> {
                                 borderRadius: BorderRadius.circular(15),
                                 color: Paleta.azulEscurao90),
                             child: FormatedText(
-                                '${variaveis[despesas].nome}\nR\$ ${variaveis[despesas].valor}',
+                                '${user.despesasVars[despesas].nome}\nR\$ ${user.despesasVars[despesas].valor}',
                                 20,
                                 FontWeight.bold));
                       },
                       separatorBuilder: (_, __) => const Divider(),
                       padding: const EdgeInsets.all(10),
-                      itemCount: variaveis.length,
+                      itemCount: user.despesasVars.length,
                     ))
               ],
             ),
@@ -152,7 +152,7 @@ class _DespesasPageState extends State<DespesasPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => NovaDespesa(
+                          builder: (context) => NovaDespesa(user: user,
                             onDespesaAdded: () => setState(() {}),
                             isDespesaFixa: false, // Para despesas variáveis
                           ),

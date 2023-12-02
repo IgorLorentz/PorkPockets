@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pork_pockets_app/models/despesas.dart';
+import 'package:pork_pockets_app/models/pessoa.dart';
 import 'package:pork_pockets_app/repositories/users_repository.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
@@ -9,11 +11,12 @@ import 'package:pork_pockets_app/util/forms_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
 
 class NovaDespesa extends StatefulWidget {
+  final Pessoa? user;
   final Function()? onDespesaAdded;
   final bool isDespesaFixa;
 
   const NovaDespesa(
-      {super.key, this.onDespesaAdded, this.isDespesaFixa = true});
+      {super.key, this.user,this.onDespesaAdded, this.isDespesaFixa = true});
 
   @override
   State<NovaDespesa> createState() => _NovaDespesaState();
@@ -33,6 +36,8 @@ class _NovaDespesaState extends State<NovaDespesa> {
 
   @override
   Widget build(BuildContext context) {
+    final user = ModalRoute.of(context)!.settings.arguments as Pessoa;
+
     return Scaffold(
       backgroundColor: Paleta.bgColor,
       appBar: appBar(),
@@ -79,7 +84,7 @@ class _NovaDespesaState extends State<NovaDespesa> {
                           ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  //_addDespesa();
+                                  _addDespesa(user);
                                   Navigator.pop(context);
                                 });
                               },
@@ -102,15 +107,15 @@ class _NovaDespesaState extends State<NovaDespesa> {
       ),
     );
   }
-  /*
-  void _addDespesa() {
+
+  void _addDespesa(Pessoa user) {
     // Adiciona a despesa como antes
     if (widget.isDespesaFixa) {
-      DespesasRepository.despesaFix.add(Despesas(
+      user.setDespesasFixas(Despesa(
           nome: nomeController.text,
           valor: double.parse(valorController.text)));
     } else {
-      DespesasRepository.despesaVar.add(Despesas(
+      user.setDespesasVars(Despesa(
           nome: nomeController.text,
           valor: double.parse(valorController.text)));
     }
@@ -118,5 +123,4 @@ class _NovaDespesaState extends State<NovaDespesa> {
     // Chama o callback
     widget.onDespesaAdded!();
   }
-  */
 }
