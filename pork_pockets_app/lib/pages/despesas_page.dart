@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pork_pockets_app/models/pessoa.dart';
 import 'package:pork_pockets_app/pages/new_despesa_page.dart';
-import 'package:pork_pockets_app/repositories/users_repository.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/images_util.dart';
@@ -81,7 +80,8 @@ class _DespesasPageState extends State<DespesasPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => NovaDespesa(user: user,
+                          builder: (context) => NovaDespesa(
+                            user: user,
                             onDespesaAdded: () => setState(() {}),
                             isDespesaFixa: true, // Para despesas fixas
                           ),
@@ -152,7 +152,8 @@ class _DespesasPageState extends State<DespesasPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => NovaDespesa(user: user,
+                          builder: (context) => NovaDespesa(
+                            user: user,
                             onDespesaAdded: () => setState(() {}),
                             isDespesaFixa: false, // Para despesas variáveis
                           ),
