@@ -17,167 +17,121 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Paleta.bgColor,
       appBar: appBar(),
-      body: Column(children: [
-        const SizedBox(
-          height: 30,
-        ),
-        Container(
-          padding: const EdgeInsets.only(left: 19),
-          child: Row(
-            children: [
-              FormatedText('Olá User', 40, FontWeight.bold),
-            ],
-          ),
-        ),
-        const SizedBox(height: 7),
-        Container(
-          padding: const EdgeInsets.only(left: 24, right: 19),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              FormatedText('Seu salário: R\$ 1000,00', 20, FontWeight.normal),
-              const SizedBox(
-                width: 40,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, "/cadastrar-renda");
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    backgroundColor: Paleta.verde,
-                  ),
-                  child: const Icon(Icons.edit,
-                      color: Color.fromARGB(500, 1, 31, 38)))
-            ],
-          ),
-        ),
-        const SizedBox(height: 17),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Paleta.azulEscurao,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Column(
-                    children: [
-                      smallText('Necessidades', FontWeight.bold,
-                          fontColor: Paleta.rosa),
-                      addImg('assets/images/50_porco.png')
-                    ],
-                  ),
-                ),
-                mediumText("R\$ 1000,00")
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Paleta.azulEscurao,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Column(
-                    children: [
-                      smallText('Lazer', FontWeight.bold,
-                          fontColor: Paleta.rosa),
-                      addImg('assets/images/30_porco.png')
-                    ],
-                  ),
-                ),
-                mediumText("R\$ 500,00")
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Paleta.azulEscurao,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Column(
-                    children: [
-                      smallText('Poupança', FontWeight.bold,
-                          fontColor: Paleta.rosa),
-                      addImg('assets/images/20_porco.png')
-                    ],
-                  ),
-                ),
-                mediumText("R\$ 200,00")
-              ],
-            )
-          ],
-        ),
-        Container(
-          margin: const EdgeInsets.all(15),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: Paleta.azulEscuro),
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.only(left: 20),
-                child: Row(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Center(
+            child: Container(
+              width: double.infinity,
+              child: Column(children: [
+                Row(children: [bigText('Olá User')]),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    FormatedText("Meta Atual: Moto", 20, FontWeight.normal),
-                    IconButton(
+                    FormatedText(
+                        'Seu salário: R\$ 1500,00', 20, FontWeight.normal),
+                    ElevatedButton(
                         onPressed: () {
-                          print("Favorite");
+                          Navigator.pushNamed(context, "/cadastrar-renda");
                         },
-                        icon: const Icon(Icons.favorite_outline,
-                        color: Colors.black,
-                        )),
-                    IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const EditMetaPage(),
-                              ));
-                        },
-                        icon: const Icon(Icons.edit,
-                        color: Colors.black,
-                        )),
+                        style: ElevatedButton.styleFrom(
+                          shape: const CircleBorder(),
+                          backgroundColor: Paleta.verde,
+                        ),
+                        child: const Icon(Icons.edit,
+                            color: Color.fromARGB(500, 1, 31, 38)))
                   ],
                 ),
-              ),
-              const SizedBox(height: 30),
-              Container(
-                margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.white),
-                child: Container(
-                    padding: const EdgeInsets.only(left: 8, right: 8),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Paleta.verde),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text("Olá zé"), Text('R\$ 1000,00')],
-                    )),
-              ),
-              IconButton(
-                  onPressed: () {
-                    print("Open");
-                  },
-                  icon: const Icon(Icons.keyboard_arrow_down)),
-            ],
+                const SizedBox(height: 30),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      card('Necessidades', '50', 'images/50_porco.png', 1000),
+                      card('Lazer', '30', 'images/30_porco.png', 300),
+                      card('Poupança', '20', 'images/20_porco.png', 200),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 30),
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Paleta.azulEscuro),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            mediumText("Meta Atual: Moto"),
+                            Row(
+                              children: [
+                                IconButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const EditMetaPage(),
+                                          ));
+                                    },
+                                    icon: const Icon(Icons.edit)),
+                                IconButton(
+                                    onPressed: () {
+                                      print("Favorite");
+                                    },
+                                    icon: const Icon(Icons.favorite_outline)),
+                              ],
+                            )
+                          ],
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: Colors.white),
+                          child: Container(
+                              padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Paleta.verde),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  mediumText("R\$ 734,85",
+                                      fontColor: Colors.black),
+                                  mediumText('R\$ 1000,00',
+                                      fontColor: Colors.black)
+                                ],
+                              )),
+                        ),
+                        const SizedBox(height: 10),
+                        IconButton(
+                            onPressed: () {
+                              print("Open");
+                            },
+                            icon: const Icon(
+                              Icons.keyboard_arrow_down,
+                              color: Colors.black,
+                            )),
+                      ],
+                    ),
+                  ),
+                ),
+                Column(
+                  children: [
+                    bigText('Reserva'),
+                    Image.asset('images/jarra.png'),
+                  ],
+                ),
+              ]),
+            ),
           ),
         ),
-      ]),
+      ),
       drawer: drawer(context),
     );
   }
@@ -210,19 +164,32 @@ class HomePage extends StatelessWidget {
             onTap: () {
               Navigator.pushNamed(context, "/metas");
             },
-            leading: const Icon(Icons.bar_chart_sharp, color: Colors.white,),
+            leading: const Icon(
+              Icons.bar_chart_sharp,
+              color: Colors.white,
+            ),
             title: FormatedText("Metas", 24, FontWeight.bold),
             subtitle: FormatedText("Suas metas", 16, FontWeight.bold),
-            trailing: const Icon(Icons.arrow_forward, color: Colors.white,),
+            trailing: const Icon(
+              Icons.arrow_forward,
+              color: Colors.white,
+            ),
           ),
           ListTile(
             onTap: () {
               Navigator.pushNamed(context, "/despesas");
             },
-            leading: const Icon(Icons.shopping_cart_checkout_rounded, color: Colors.white,),
+            leading: const Icon(
+              Icons.shopping_cart_checkout_rounded,
+              color: Colors.white,
+            ),
             title: FormatedText("Despesas", 24, FontWeight.bold),
-            subtitle: FormatedText("Gerencie suas despesas", 16, FontWeight.bold),
-            trailing: const Icon(Icons.arrow_forward, color: Colors.white,),
+            subtitle:
+                FormatedText("Gerencie suas despesas", 16, FontWeight.bold),
+            trailing: const Icon(
+              Icons.arrow_forward,
+              color: Colors.white,
+            ),
           ),
         ],
       ),
@@ -235,16 +202,18 @@ Column card(String title, String percent, String img, double value) {
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
       Container(
+        width: 150,
         padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+        margin: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           color: Paleta.azulEscurao90,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(
           children: [
-            mediumText(title, fontColor: Paleta.rosa),
-            Image.asset(img, width: 150),
-            hugeText('$percent%', fontColor: Paleta.rosaClaro)
+            smallText(title, FontWeight.bold, fontColor: Paleta.rosa),
+            Image.asset(img),
+            mediumText('$percent%', fontColor: Paleta.rosaClaro)
           ],
         ),
       ),
