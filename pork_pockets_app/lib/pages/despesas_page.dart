@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pork_pockets_app/pages/new_despesa_page.dart';
 import 'package:pork_pockets_app/repositories/despesas_repository.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
@@ -6,7 +7,7 @@ import 'package:pork_pockets_app/util/images_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
 
 class DespesasPage extends StatefulWidget {
-  const DespesasPage({Key? key}) : super(key: key);
+  const DespesasPage({super.key});
 
   @override
   State<DespesasPage> createState() => _DespesasPageState();
@@ -77,7 +78,13 @@ class _DespesasPageState extends State<DespesasPage> {
                 ),
                 child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, "/nova-despesa");
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => NovaDespesa(
+                              onDespesaAdded: () => setState(() {}),
+                            ),
+                          ));
                     },
                     style: ElevatedButton.styleFrom(
                       shape: const CircleBorder(),
@@ -136,9 +143,8 @@ class _DespesasPageState extends State<DespesasPage> {
               child: Container(
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
-                  color: Paleta.azulEscurao,
-                  borderRadius: BorderRadius.circular(15)
-                ),
+                    color: Paleta.azulEscurao,
+                    borderRadius: BorderRadius.circular(15)),
                 child: ElevatedButton(
                     onPressed: () {
                       Navigator.pushNamed(context, "/nova-despesa");

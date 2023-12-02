@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pork_pockets_app/pages/validator.dart';
 
 final Validation validar = Validation();
+
 TextFormField NameForm(
   TextInputAction textInputAction,
   bool autofocus,
@@ -119,7 +120,7 @@ TextFormField ValueForm(TextInputAction textInputAction, bool autofocus) {
   );
 }
 
-TextFormField despesaForm(TextInputAction textInputAction, bool autofocus,
+TextFormField despesaForm(String atributo, TextInputAction textInputAction, bool autofocus,
     TextEditingController? controller) {
   return TextFormField(
     controller: controller,
@@ -127,9 +128,9 @@ TextFormField despesaForm(TextInputAction textInputAction, bool autofocus,
     textInputAction: TextInputAction.next,
     keyboardType: TextInputType.text,
     autofocus: autofocus,
-    decoration: const InputDecoration(
-      hintText: "Nome Completo",
-      border: OutlineInputBorder(borderSide: BorderSide()),
+    decoration: InputDecoration(
+      hintText: "$atributo da despesa",
+      border: const OutlineInputBorder(borderSide: BorderSide()),
       fillColor: Colors.white,
       filled: true,
     ),

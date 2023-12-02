@@ -10,7 +10,9 @@ import 'package:pork_pockets_app/util/forms_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
 
 class NovaDespesa extends StatefulWidget {
-  const NovaDespesa({super.key});
+  final Function()? onDespesaAdded;
+
+  const NovaDespesa({super.key, this.onDespesaAdded});
 
   @override
   State<NovaDespesa> createState() => _NovaDespesaState();
@@ -59,24 +61,24 @@ class _NovaDespesaState extends State<NovaDespesa> {
                         children: [
                           bigText("Nova despesa", fontColor: Colors.black),
                           const SizedBox(height: 50),
-                          mediumText("Insira um nome:",
-                              fontColor: Colors.black),
-                          despesaForm(
-                              TextInputAction.next, false, nomeController),
+                          Row(children: [
+                            mediumText("Insira um nome:",
+                                fontColor: Colors.black),
+                          ]),
+                          despesaForm('Nome', TextInputAction.next, false,
+                              nomeController),
                           const SizedBox(height: 30),
-                          mediumText("Insira um valor:",
-                              fontColor: Colors.black),
-                          despesaForm(
-                              TextInputAction.next, false, valorController),
+                          Row(children: [
+                            mediumText("Insira um valor:",
+                                fontColor: Colors.black),
+                          ]),
+                          despesaForm('Valor', TextInputAction.next, false,
+                              valorController),
                           const SizedBox(height: 50),
                           ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  DespesasRepository.addDespesaFix(Despesas(
-                                      nome: nomeController.text,
-                                      valor:
-                                          double.parse(valorController.text)));
-                                  print(DespesasRepository.despesaFix[3].nome);
+                                  _addDespesa();
                                   Navigator.pop(context);
                                 });
                               },
@@ -100,9 +102,12 @@ class _NovaDespesaState extends State<NovaDespesa> {
     );
   }
 
-  void novaFixa() => DespesasRepository.despesaFix.add(Despesas(
-      nome: nomeController.text, valor: double.parse(valorController.text)));
+  void _addDespesa() {
+    // Adiciona a despesa como antes
+    DespesasRepository.despesaFix.add(Despesas(
+        nome: nomeController.text, valor: double.parse(valorController.text)));
 
-  void novaVariavel() => DespesasRepository.despesaVar.add(Despesas(
-      nome: nomeController.text, valor: double.parse(valorController.text)));
+    // Chama o callback
+    widget.onDespesaAdded!();
+  }
 }
