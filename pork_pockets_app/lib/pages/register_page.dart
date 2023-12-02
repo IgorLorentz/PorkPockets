@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pork_pockets_app/models/pessoa.dart';
+import 'package:pork_pockets_app/repositories/users_repository.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/forms_util.dart';
@@ -14,9 +16,13 @@ class RegisterPage extends StatefulWidget
 
 class _RegisterPageState extends State<RegisterPage> 
 {
-  // ignore: unused_field
-  final _formKey = GlobalKey<FormState>();
   bool passwordObscured = true;
+  late Pessoa user;
+  final users = UsersRepository.instance.user;
+  final _formKey = GlobalKey<FormState>();
+  final fieldNome = TextEditingController();
+  final fieldEmail = TextEditingController();
+  final fieldSenha = TextEditingController();
 
   @override
   Widget build(BuildContext context) 
@@ -31,6 +37,7 @@ class _RegisterPageState extends State<RegisterPage>
       (
         child: Form
         (
+          key: _formKey,
           child: Padding
           (
             padding: const EdgeInsets.all(16.0),
@@ -47,13 +54,13 @@ class _RegisterPageState extends State<RegisterPage>
             
                 Container(width: double.infinity, child: FormatedText("Insira seu nome completo", 20, FontWeight.bold)),
             
-                NameForm(TextInputAction.next, true),
+                nameFormRegister(TextInputAction.next, true),
 
                 const SizedBox(height: 15),
 
                 Container(width: double.infinity, child: FormatedText("Insira seu e-mail", 20, FontWeight.bold)),
 
-                EmailForm(TextInputAction.next, false),
+                emailFormRegister(TextInputAction.next, false),
 
                 const SizedBox(height: 15),
 
@@ -71,7 +78,7 @@ class _RegisterPageState extends State<RegisterPage>
 
                 ElevatedButton
                 (
-                  onPressed: () {Navigator.pushNamed(context, "/");}, 
+                  onPressed: () {_onSubmit(context);}, 
                   style: ElevatedButton.styleFrom
                   (
                     backgroundColor: Paleta.azulEscurao,
@@ -92,7 +99,9 @@ class _RegisterPageState extends State<RegisterPage>
                 textInputAction: TextInputAction.done,
                 keyboardType: TextInputType.number,
                 obscureText: passwordObscured,
-              
+                validator: (senha) => validar.campoSenha(senha.toString()),
+                controller: fieldSenha,
+
                 decoration: InputDecoration
                 (
                   hintText: "Password",
@@ -115,5 +124,91 @@ class _RegisterPageState extends State<RegisterPage>
                   fontWeight: FontWeight.bold,
                 ),
               );
+  }
+
+  TextFormField emailFormRegister(TextInputAction textInputAction, bool autofocus) 
+  {
+    return TextFormField(
+      validator: (email) => validar.campoEmail(email.toString()),
+      textInputAction: TextInputAction.next,
+      keyboardType: TextInputType.emailAddress,
+      autofocus: autofocus,
+      controller: fieldEmail,
+      decoration: const InputDecoration(
+        hintText: "seu_email@mail.com",
+        border: OutlineInputBorder(borderSide: BorderSide()),
+        fillColor: Colors.white,
+        filled: true,
+      ),
+      style: const TextStyle(
+        fontFamily: "Josefin",
+        fontWeight: FontWeight.bold,
+      ),
+    );
+  }
+
+TextFormField nameFormRegister(TextInputAction textInputAction, bool autofocus,) 
+{
+  return TextFormField(
+    validator: (nome) => validar.campoNome(nome.toString()),
+    textInputAction: TextInputAction.next,
+    keyboardType: TextInputType.text,
+    autofocus: autofocus,
+    controller: fieldNome,
+    decoration: const InputDecoration(
+      hintText: "Nome Completo",
+      border: OutlineInputBorder(borderSide: BorderSide()),
+      fillColor: Colors.white,
+      filled: true,
+    ),
+    style: const TextStyle(
+      fontFamily: "Josefin",
+      fontWeight: FontWeight.bold,
+    ),
+  );
+}
+
+  void _onSubmit(inContext) 
+  {
+    if (_formKey.currentState!.validate()) 
+    {
+      user = Pessoa(nome: fieldNome.text, email: fieldEmail.text, senha: fieldSenha.text);
+      users.add(user);
+      alerta(inContext, FormatedText("Usuário criado com sucesso", 20, FontWeight.bold, fontColor: Paleta.verde));
+      Navigator.pushNamed(context, "/", );
+    } 
+    else 
+    {
+      alerta(inContext, FormatedText("Formulário inválido!", 20, FontWeight.bold, fontColor: Paleta.dangerous));
+    }
+  }
+
+  Future<dynamic> alerta(inContext, erro) {
+    return showDialog(
+      context: inContext,
+      barrierDismissible: false,
+      builder: (inContext) {
+        return WillPopScope(
+          onWillPop: () async => false,
+          child: AlertDialog(
+            title: erro,
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(inContext);
+                },
+                child: const Text('Cancelar'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(inContext);
+                },
+                child: const Text('OK'),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }
