@@ -6,12 +6,13 @@ Map<String, WidgetBuilder> routes()
   return 
   {
     '/': (context) => const LoginPage(),
-    '/home': (context) => const HomePage(),
     '/register': (context) => const RegisterPage(),
+    '/home': (context) => const HomePage(),
     '/metas': (context) => const MetasPage(),
+    '/nova-meta': (context) => const NovaMeta(),
+    '/edit-meta': (context) => const EditMetaPage(),
     '/guide': (context) => const GuidePage(),
     '/cadastrar-renda': (context) => const CadastraRenda(),
-    '/nova-meta': (context) => const NovaMeta(),
     '/despesas': (context) => const DespesasPage(),
   };
 }
