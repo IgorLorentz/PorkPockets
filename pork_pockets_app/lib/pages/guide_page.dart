@@ -36,6 +36,7 @@ class GuidePage extends StatelessWidget {
                     ),
                   ),
                   Container(
+                    margin: EdgeInsets.all(20),
                     padding: EdgeInsets.all(20),
                     child: FormatedText(
                         'Nós utilizamos o método 50-30-20 para te auxiliar a administrar suas finanças. A ideia é dividir a renda líquida mensal em três partes (50%, 30% e 20%), considerando as despesas fixas, despesas variáveis e o dinheiro que você vai poupar.',
@@ -43,6 +44,7 @@ class GuidePage extends StatelessWidget {
                         FontWeight.w400),
                   ),
                   Container(
+                    margin: EdgeInsets.all(20),
                     width: 600,
                     decoration: BoxDecoration(
                     color: Color.fromARGB(200, 2, 94, 115),
@@ -51,6 +53,7 @@ class GuidePage extends StatelessWidget {
                     child: guiaInfo('assets/images/50_porco.png', '50%', 'Os gastos fixos são aqueles essenciais: energia elétrica, água, moradia, supermercado, transporte, plano de saúde, farmácia. Para entender o que realmente é um gasto essencial, reflita sobre o que pode ser dispensável e o que realmente é fundamental para você.')),
                   SizedBox(height: 20,),
                   Container(
+                    margin: EdgeInsets.all(20),
                     width: 600,
                     decoration: BoxDecoration(
                     color: Color.fromARGB(200, 2, 94, 115),
@@ -59,6 +62,7 @@ class GuidePage extends StatelessWidget {
                     child: guiaInfo('assets/images/30_porco.png', '30%', 'Tudo o que não entrou na primeira lista e que não é considerado essencial para a sobrevivência pode ser classificado como gasto variável ou dispensável. É o café da manhã na padaria aos domingos, os serviços de streaming que você assina, a TV a cabo, os serviços que você faz fora de casa, como unha, cabelo, massagem, compras online muitas vezes desnecessárias que você faz para aproveitar uma suposta promoção.')),
                   SizedBox(height: 20,),
                   Container(
+                    margin: EdgeInsets.all(20),
                     width: 600,
                     decoration: BoxDecoration(
                     color: Color.fromARGB(200, 2, 94, 115),
