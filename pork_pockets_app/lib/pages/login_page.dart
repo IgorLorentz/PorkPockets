@@ -23,118 +23,122 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Paleta.bgColor,
       appBar: appBar(),
-      body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  children: [
-                    SvgPicture.asset('images/flying_pig.svg'),
-                    const SizedBox(
-                      height: 62,
-                    ),
-                    FormatedText("Bem-Vindo de volta!", 36, FontWeight.bold),
-                    const SizedBox(height: 22),
-                    Row(
-                      children: [
-                        FormatedText("Insira seu e-mail:", 20, FontWeight.bold),
-                      ],
-                    ),
-                    EmailForm(TextInputAction.next, true),
-                    const SizedBox(height: 15),
-                    Row(
-                      children: [
-                        FormatedText("Insira sua senha:", 20, FontWeight.bold),
-                      ],
-                    ),
-                    TextFormField(
-                      onFieldSubmitted: (value) {
-                        _onSubmit(context);
-                      },
-                      validator: (senha) =>
-                          validar.campoSenha(senha.toString()),
-                      textInputAction: TextInputAction.done,
-                      keyboardType: TextInputType.number,
-                      autofocus: false,
-                      obscureText: passwordObscured,
-                      decoration: InputDecoration(
-                          hintText: "Password",
-                          border: const OutlineInputBorder(
-                              borderSide: BorderSide()),
-                          fillColor: Colors.white,
-                          filled: true,
-                          suffixIcon: IconButton(
-                            icon: Icon(passwordObscured
-                                ? Icons.visibility_off
-                                : Icons.visibility),
-                            onPressed: () {
-                              setState(
-                                  () => passwordObscured = !passwordObscured);
-                            },
-                          )),
-                      style: const TextStyle(
-                        fontFamily: "Josefin",
-                        fontWeight: FontWeight.bold,
+      body: Center(
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    children: [
+                      SvgPicture.asset('images/flying_pig.svg'),
+                      const SizedBox(
+                        height: 62,
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(top: 10),
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const EsqueceuSenha(),
-                                ),
-                              );
-                            },
-                            child: FormatedText(
-                                'Esqueceu a senha', 20, FontWeight.bold,
-                                fontColor: Colors.black),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 25),
-                    ElevatedButton(
-                        onPressed: () {
+                      FormatedText("Bem-Vindo de volta!", 36, FontWeight.bold),
+                      const SizedBox(height: 22),
+                      Row(
+                        children: [
+                          FormatedText(
+                              "Insira seu e-mail:", 20, FontWeight.bold),
+                        ],
+                      ),
+                      EmailForm(TextInputAction.next, true),
+                      const SizedBox(height: 15),
+                      Row(
+                        children: [
+                          FormatedText(
+                              "Insira sua senha:", 20, FontWeight.bold),
+                        ],
+                      ),
+                      TextFormField(
+                        onFieldSubmitted: (value) {
                           _onSubmit(context);
                         },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Paleta.azulEscurao,
+                        validator: (senha) =>
+                            validar.campoSenha(senha.toString()),
+                        textInputAction: TextInputAction.done,
+                        keyboardType: TextInputType.number,
+                        autofocus: false,
+                        obscureText: passwordObscured,
+                        decoration: InputDecoration(
+                            hintText: "Password",
+                            border: const OutlineInputBorder(
+                                borderSide: BorderSide()),
+                            fillColor: Colors.white,
+                            filled: true,
+                            suffixIcon: IconButton(
+                              icon: Icon(passwordObscured
+                                  ? Icons.visibility_off
+                                  : Icons.visibility),
+                              onPressed: () {
+                                setState(
+                                    () => passwordObscured = !passwordObscured);
+                              },
+                            )),
+                        style: const TextStyle(
+                          fontFamily: "Josefin",
+                          fontWeight: FontWeight.bold,
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: mediumText("Login", fontColor: Colors.white),
-                        )),
-                    const SizedBox(height: 15),
-                    ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, "/register");
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(70, 1, 31, 38),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: mediumText("Cadastre-se",
-                              fontColor: Colors.white),
-                        )),
-                    const SizedBox(height: 50),
-                  ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(top: 10),
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const EsqueceuSenha(),
+                                  ),
+                                );
+                              },
+                              child: FormatedText(
+                                  'Esqueceu a senha', 20, FontWeight.bold,
+                                  fontColor: Colors.black),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 25),
+                      ElevatedButton(
+                          onPressed: () {
+                            _onSubmit(context);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Paleta.azulEscurao,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: mediumText("Login", fontColor: Colors.white),
+                          )),
+                      const SizedBox(height: 15),
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, "/register");
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromARGB(70, 1, 31, 38),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: mediumText("Cadastre-se",
+                                fontColor: Colors.white),
+                          )),
+                    ],
+                  ),
                 ),
-              ),
-              Footer()
-            ],
+              ],
+            ),
           ),
         ),
       ),
+      bottomNavigationBar: Footer(),
     );
   }
 
