@@ -61,16 +61,21 @@ class _NovaDespesaState extends State<NovaDespesa> {
                           const SizedBox(height: 50),
                           mediumText("Insira um nome:",
                               fontColor: Colors.black),
-                          despesaForm(TextInputAction.next, false, nomeController),
+                          despesaForm(
+                              TextInputAction.next, false, nomeController),
                           const SizedBox(height: 30),
                           mediumText("Insira um valor:",
                               fontColor: Colors.black),
-                          despesaForm(TextInputAction.next, false, valorController),
+                          despesaForm(
+                              TextInputAction.next, false, valorController),
                           const SizedBox(height: 50),
                           ElevatedButton(
                               onPressed: () {
                                 DespesasRepository.addDespesaFix(Despesas(
-    nome: nomeController.text, valor: double.parse(valorController.text)));
+                                    nome: nomeController.text,
+                                    valor: double.parse(valorController.text)));
+                                print(DespesasRepository.despesaFix);
+                                Navigator.pop(context);
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Paleta.azulEscurao,
@@ -91,9 +96,10 @@ class _NovaDespesaState extends State<NovaDespesa> {
       ),
     );
   }
+
   void novaFixa() => DespesasRepository.despesaFix.add(Despesas(
-    nome: nomeController.text, valor: double.parse(valorController.text)));
-  
+      nome: nomeController.text, valor: double.parse(valorController.text)));
+
   void novaVariavel() => DespesasRepository.despesaVar.add(Despesas(
-    nome: nomeController.text, valor: double.parse(valorController.text)));
+      nome: nomeController.text, valor: double.parse(valorController.text)));
 }
