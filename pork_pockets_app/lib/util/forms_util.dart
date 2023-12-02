@@ -120,6 +120,26 @@ TextFormField ValueForm(TextInputAction textInputAction, bool autofocus) {
   );
 }
 
+TextFormField EmailFormController(TextInputAction textInputAction, bool autofocus, TextEditingController controller) {
+  return TextFormField(
+    validator: (email) => validar.campoEmail(email.toString()),
+    textInputAction: TextInputAction.next,
+    keyboardType: TextInputType.emailAddress,
+    autofocus: autofocus,
+    controller: controller,
+    decoration: const InputDecoration(
+      hintText: "seu_email@mail.com",
+      border: OutlineInputBorder(borderSide: BorderSide()),
+      fillColor: Colors.white,
+      filled: true,
+    ),
+    style: const TextStyle(
+      fontFamily: "Josefin",
+      fontWeight: FontWeight.bold,
+    ),
+  );
+}
+
 TextFormField despesaForm(String atributo, TextInputAction textInputAction, bool autofocus,
     TextEditingController? controller) {
   return TextFormField(
