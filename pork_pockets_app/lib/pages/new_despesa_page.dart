@@ -35,8 +35,6 @@ class _NovaDespesaState extends State<NovaDespesa> {
 
   @override
   Widget build(BuildContext context) {
-    //final user = ModalRoute.of(context)!.settings.arguments as Pessoa;
-
     return Scaffold(
       backgroundColor: Paleta.bgColor,
       appBar: appBar(),
