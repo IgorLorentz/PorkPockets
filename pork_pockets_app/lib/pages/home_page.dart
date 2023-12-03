@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pork_pockets_app/models/pessoa.dart';
 import 'package:pork_pockets_app/pages/cadastrar_renda_page.dart';
-import 'package:pork_pockets_app/pages/edit_meta_page.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
@@ -84,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            FormatedText("Meta: Moto", 20, FontWeight.normal),
+                            FormatedText("Meta: Exemplo", 20, FontWeight.normal),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -117,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                                     "R\$ 0", 14, FontWeight.normal,
                                     fontColor: Colors.black),
                                 FormatedText(
-                                    "R\$ 12.000", 14, FontWeight.normal,
+                                    "R\$ 100.000", 14, FontWeight.normal,
                                     fontColor: Colors.black)
                               ],
                             )),

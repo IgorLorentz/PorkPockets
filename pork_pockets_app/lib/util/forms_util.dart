@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pork_pockets_app/pages/validator.dart';
+import 'package:pork_pockets_app/validator.dart';
 
 final Validation validar = Validation();
 

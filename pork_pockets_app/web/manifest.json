@@ -1,5 +1,5 @@
 {
-    "name": "pork_pockets_app",
+    "name": "PorkPockets",
     "short_name": "pork_pockets_app",
     "start_url": ".",
     "display": "standalone",

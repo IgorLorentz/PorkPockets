@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="pork_pockets_app"
+        android:label="PorkPockets"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

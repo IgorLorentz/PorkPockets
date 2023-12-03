@@ -7,3 +7,4 @@ export '../pages/login_page.dart';
 export '../pages/metas_page.dart';
 export '../pages/new_meta_page.dart';
 export '../pages/register_page.dart';
+export '../pages/new_despesa_page.dart';
