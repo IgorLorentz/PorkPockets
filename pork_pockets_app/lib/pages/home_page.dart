@@ -1,13 +1,9 @@
-// ignore_for_file: avoid_print, sized_box_for_whitespace
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:pork_pockets_app/models/pessoa.dart';
 import 'package:pork_pockets_app/pages/cadastrar_renda_page.dart';
 import 'package:pork_pockets_app/pages/edit_meta_page.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
-import 'package:pork_pockets_app/util/images_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,8 +24,9 @@ class _HomePageState extends State<HomePage> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Center(
-            child: Container(
+            child: SizedBox(
               width: double.infinity,
+
               child: Column(children: [
                 Row(children: [bigText('Olá ${user.nome}')]),
                 Row(
@@ -63,9 +60,9 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      card('Necessidades', '50', 'images/50_porco.png', 1000),
-                      card('Lazer', '30', 'images/30_porco.png', 300),
-                      card('Poupança', '20', 'images/20_porco.png', 200),
+                      card('Necessidades', '50', 'images/50_porco.png', user.salario / 100 * 50),
+                      card('Lazer', '30', 'images/30_porco.png', user.salario / 100 * 30),
+                      card('Poupança', '20', 'images/20_porco.png', user.salario / 100 * 20),
                     ],
                   ),
                 ),
@@ -181,7 +178,7 @@ class _HomePageState extends State<HomePage> {
               )),
           ListTile(
             onTap: () {
-              Navigator.pushNamed(context, "/metas");
+              Navigator.pushNamed(context, "/metas", arguments: user);
             },
             leading: const Icon(
               Icons.bar_chart_sharp,

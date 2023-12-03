@@ -17,6 +17,11 @@ class Pessoa {
     this.salario = 0000.00,
   });
 
+  void setSlario(double salario)
+  {
+    this.salario = salario;
+  }
+
   void setDespesasFixas(Despesa despesa)
   {
     despesasFixas.add(despesa);
