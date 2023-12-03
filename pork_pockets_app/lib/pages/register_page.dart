@@ -52,25 +52,25 @@ class _RegisterPageState extends State<RegisterPage>
             
                 const SizedBox(height: 35),
             
-                Container(width: double.infinity, child: FormatedText("Insira seu nome completo", 20, FontWeight.bold)),
+                SizedBox(width: double.infinity, child: FormatedText("Insira seu nome completo", 20, FontWeight.bold)),
             
                 nameFormRegister(TextInputAction.next, true),
 
                 const SizedBox(height: 15),
 
-                Container(width: double.infinity, child: FormatedText("Insira seu e-mail", 20, FontWeight.bold)),
+                SizedBox(width: double.infinity, child: FormatedText("Insira seu e-mail", 20, FontWeight.bold)),
 
                 emailFormRegister(TextInputAction.next, false),
 
                 const SizedBox(height: 15),
 
-                Container(width: double.infinity, child: FormatedText("Insira uma senha", 20, FontWeight.bold)),
+                SizedBox(width: double.infinity, child: FormatedText("Insira uma senha", 20, FontWeight.bold)),
 
                 passwordForm(TextInputAction.next),
 
                 const SizedBox(height: 15),
 
-                Container(width: double.infinity, child: FormatedText("Confirme sua senha", 20, FontWeight.bold)),
+                SizedBox(width: double.infinity, child: FormatedText("Confirme sua senha", 20, FontWeight.bold)),
 
                 passwordForm(TextInputAction.done),
 

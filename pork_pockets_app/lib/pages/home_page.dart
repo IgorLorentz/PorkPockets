@@ -14,6 +14,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool _isExpanded = false;
+
   @override
   Widget build(BuildContext context) {
     final user = ModalRoute.of(context)!.settings.arguments as Pessoa;
@@ -26,7 +28,6 @@ class _HomePageState extends State<HomePage> {
           child: Center(
             child: SizedBox(
               width: double.infinity,
-
               child: Column(children: [
                 Row(children: [bigText('Olá ${user.nome}')]),
                 Row(
@@ -60,80 +61,94 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      card('Necessidades', '50', 'images/50_porco.png', user.salario / 100 * 50),
-                      card('Lazer', '30', 'images/30_porco.png', user.salario / 100 * 30),
-                      card('Poupança', '20', 'images/20_porco.png', user.salario / 100 * 20),
+                      card('Necessidades', '50', 'images/50_porco.png',
+                          user.salario / 100 * 50),
+                      card('Lazer', '30', 'images/30_porco.png',
+                          user.salario / 100 * 30),
+                      card('Poupança', '20', 'images/20_porco.png',
+                          user.salario / 100 * 20),
                     ],
                   ),
                 ),
                 const SizedBox(height: 30),
                 Container(
-                  width: double.infinity,
+                  margin: const EdgeInsets.only(left: 15, right: 15, top: 15),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: Paleta.azulEscuro),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      children: [
-                        Row(
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 15),
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            mediumText("Meta Atual: Moto"),
+                            FormatedText("Meta: Moto", 20, FontWeight.normal),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                IconButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                const EditMetaPage(),
-                                          ));
-                                    },
-                                    icon: const Icon(Icons.edit)),
-                                IconButton(
-                                    onPressed: () {
-                                      print("Favorite");
-                                    },
-                                    icon: const Icon(Icons.favorite_outline)),
+                                Icon(
+                                  Icons.favorite,
+                                  color: Paleta.rosa,
+                                )
                               ],
                             )
                           ],
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: Colors.white),
-                          child: Container(
-                              padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  color: Paleta.verde),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  mediumText("R\$ 734,85",
-                                      fontColor: Colors.black),
-                                  mediumText('R\$ 1000,00',
-                                      fontColor: Colors.black)
-                                ],
-                              )),
-                        ),
-                        const SizedBox(height: 10),
-                        IconButton(
-                            onPressed: () {
-                              print("Open");
-                            },
-                            icon: const Icon(
-                              Icons.keyboard_arrow_down,
-                              color: Colors.black,
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 0, horizontal: 15),
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.white),
+                        child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 3, horizontal: 8),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: Paleta.verde),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                FormatedText(
+                                    "R\$ 0", 14, FontWeight.normal,
+                                    fontColor: Colors.black),
+                                FormatedText(
+                                    "R\$ 12.000", 14, FontWeight.normal,
+                                    fontColor: Colors.black)
+                              ],
                             )),
-                      ],
-                    ),
+                      ),
+                      ExpandIcon(
+                        isExpanded: _isExpanded,
+                        color: Colors.black,
+                        expandedColor: Colors.black,
+                        onPressed: (bool isExpanded) {
+                          setState(() => _isExpanded = !isExpanded);
+                        },
+                      ),
+                      if (_isExpanded)
+                        Container(
+                          //margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 25),
+                          padding: const EdgeInsets.all(5),
+                          width: double.infinity,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.only(
+                                bottomLeft: Radius.circular(15),
+                                bottomRight: Radius.circular(15)),
+                            color: Paleta.azulEscurao,
+                          ),
+                          child: FormatedText(
+                              "Tempo estimado: 2 meses", 14, FontWeight.normal),
+                        )
+                    ],
                   ),
                 ),
+                const SizedBox(height: 30),
                 Column(
                   children: [
                     bigText('Reserva'),
