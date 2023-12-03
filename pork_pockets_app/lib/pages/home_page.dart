@@ -178,7 +178,7 @@ class _HomePageState extends State<HomePage> {
               )),
           ListTile(
             onTap: () {
-              Navigator.pushNamed(context, "/metas");
+              Navigator.pushNamed(context, "/metas", arguments: user);
             },
             leading: const Icon(
               Icons.bar_chart_sharp,

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pork_pockets_app/util/appbar.dart';
 import 'package:pork_pockets_app/util/color_util.dart';
 import 'package:pork_pockets_app/util/images_util.dart';
-import 'package:pork_pockets_app/util/svg_util.dart';
 import 'package:pork_pockets_app/util/text_util.dart';
 
 class GuidePage extends StatelessWidget {
